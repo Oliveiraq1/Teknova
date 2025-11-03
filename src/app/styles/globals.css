@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ======= CLASSES UTILITARIAS */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ======= TIPOGRAFIA */
+.h1 {
+  font-size: clamp(1.5rem, 5vw, 3.25rem);
+}
+
+/* ======= RESPONSIVIDADE */
+@media (min-width: 768px) {  // TABLET
+  /* ======= CLASSES UTILITARIAS */
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) { // LAPTOP
+  /* ======= CLASSES UTILITARIAS */
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) { // LAPTOP M
+  /* ======= CLASSES UTILITARIAS */
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1440px) { // LAPTOP L
+  /* ======= CLASSES UTILITARIAS */
+  .container {
+    max-width: 720px;
+  }
+}
+
+/* @media (min-width: 2650px) {} // 4K */

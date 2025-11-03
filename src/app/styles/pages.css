@@ -1,0 +1,14 @@
+/* === Error page */
+.error-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  height: 100%;
+}
+.error-icon {
+  width: 35px;
+  height: auto;
+}
