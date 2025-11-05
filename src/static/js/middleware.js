@@ -1,5 +1,5 @@
-import { cookieTypes } from "./@types/cookie.types.js";
-import Cookies from "./utils/cookies.js"
+import { cookieTypes } from "./cookies/cookie.types.js";
+import Cookies from "./cookies/cookies.js"
 
 const public_routes = [
   { path: "login", whenAuthenticated: "redirect" },

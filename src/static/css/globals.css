@@ -1,0 +1,39 @@
+:root {
+  --color-gray: #F5F6F9;
+  --color-white: #FFF;
+  
+  /* TEXT */
+  --text-off: #7D7D91;
+  --text-gray: #6C7278;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ======= Tags basicas */
+input {
+  width: 100%;
+  padding: .68rem;
+  color: #000;
+
+  outline: none;
+  border: 2px solid var(--color-gray);
+  border-radius: .5rem;
+}
+
+button {
+  background-color: #1D61E7;
+  color: var(--color-white);
+  padding: .8rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+}

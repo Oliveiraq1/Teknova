@@ -1,0 +1,27 @@
+@media (min-width: 768px) {  // TABLET
+  /* ======= Classes Utilitarias */
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) { // LAPTOP
+  /* ======= Classes Utilitarias */
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) { // LAPTOP M
+  /* ======= Classes Utilitarias */
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1440px) { // LAPTOP L
+  /* ======= Classes Utilitarias */
+  .container {
+    max-width: 720px;
+  }
+}

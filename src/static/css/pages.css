@@ -1,0 +1,57 @@
+/* ======= Login & Registro */
+.lr-main {
+  gap: 2rem;
+}
+.lr-header {
+  gap: 1.3rem;
+  padding: 1.03rem;
+}
+.lr-header__text {
+  gap: .4rem;
+  max-width: 18rem;
+}
+.lr-form {
+  width: 100%;
+  max-width: 20rem;
+  gap: 1.2rem;
+}
+.lr-form__selectors {
+  padding: .23rem;
+  gap: .3rem;
+
+  background-color: var(--color-gray);
+}
+.lr-form__selector {
+  padding: .5rem;
+}
+.lr-form__selector a {
+  text-decoration: none;
+  color: var(--text-off);
+}
+.lr-form__selected {
+  background-color: var(--color-white);
+}
+.lr-form__selected a {
+  color: #000;
+}
+.lr-form__label {
+  position: relative;
+  color: var(--text-gray);
+  font-size: .85rem;
+}
+.lr-form__password {
+  padding-right: 2rem;
+}
+.lr-form__password-eye {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+}
+.lr-form__password-eye img {
+  width: 1.05rem;
+  height: 1.05rem;
+  cursor: pointer;
+}
+.lr-form__name {
+  gap: 1rem;
+}

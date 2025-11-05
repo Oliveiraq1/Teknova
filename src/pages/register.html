@@ -1,0 +1,62 @@
+<div class="container">
+  <!-- Header -->
+  <div class="flex-center flex-col w-full h-full lr-main">
+    <div class="flex-center flex-col lr-header">
+      <img src="../static/assets/pap-logo.png" alt="pap-logo" />
+      <div class="flex-center flex-col lr-header__text">
+        <h1>Entre agora!</h1>
+        <p class="text-center">Crie uma conta ou faça login para acessar a plataforma.</p>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <div class="flex flex-col w-full lr-form">
+      <div class="flex w-full radius-sm lr-form__selectors">
+        <div class="flex-1 lr-form__selector text-center">
+          <a href="#login">Login</a>
+        </div>
+        <div class="flex-1 lr-form__selector text-center lr-form__selected radius-sm">
+          <a href="#register">Registro</a>
+        </div>
+      </div>
+      <form method="post" class="flex flex-col lr-form" onsubmit="register(event)">
+        <div class="flex lr-form__name">
+          <label for="name" class="flex flex-col lr-form__label flex-1">
+            Nome
+            <input type="text" id="name" name="name" required>
+          </label>
+          <label for="last_name" class="flex flex-col lr-form__label flex-1">
+            Ultimo nome *
+            <input type="text" id="last_name" name="last_name" required>
+          </label>
+        </div>
+
+        <label for="cpf" class="flex flex-col lr-form__label">
+          CPF *
+          <input type="text" id="cpf" name="cpf" maxlength="14" placeholder="000.000.000-00" required>
+        </label>
+
+        <label for="email" class="flex flex-col lr-form__label">
+          Email *
+          <input type="email" id="email" name="email" required>
+        </label>
+
+        <label for="birthdate" class="flex flex-col lr-form__label">
+          Data de nascimento *
+          <input type="date" id="birthdate" name="birthdate" required>
+        </label>
+
+        <label for="password" class="flex flex-col lr-form__label">
+          Senha *
+          <input type="password" id="password" name="password" class="lr-form__password" />
+          <div class="lr-form__password-eye">
+            <img src="../static/assets/icons/password-eye.svg" id="eyeIcon-password"
+              onclick="changePasswordFileType('password')" />
+          </div>
+        </label>
+
+        <button>Registrar</button>
+      </form>
+    </div>
+  </div>
+</div>
