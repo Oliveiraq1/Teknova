@@ -14,6 +14,7 @@ window.login = function login(e) {
   const users = LocalStorage.get(localStorageTypes.USERS);
   const user = users.find(u => u.cpf == cpf);
   if (!user) return window.alert("Credenciais invalidas!");
+  if (password != user.password) return window.alert("Credenciais invalidas!");
 
   const { password: _, ...authData } = user;
   Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...authData }));
@@ -53,7 +54,6 @@ window.changePasswordFileType = function changePasswordFileType(id) {
   const icon = document.getElementById(`eyeIcon-${id}`);
 
   if (!input || !icon) return;
-  1
   if (input.type === "text") {
     input.type = "password";
     icon.src = "/static/assets/icons/password-eye.svg";
@@ -62,5 +62,3 @@ window.changePasswordFileType = function changePasswordFileType(id) {
     icon.src = "/static/assets/icons/password-eye-slash.svg";
   }
 }
-
-/* ======= ... */
