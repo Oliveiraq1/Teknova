@@ -1,6 +1,14 @@
 import { middleware } from "./middleware.js";
 import ErrorPage from "./pages/error/page.js";
 
+import {
+  onSubmitLogin,
+  onSubmitRegister
+} from "./utils/forms.js";
+
+window.onSubmitLogin = onSubmitLogin;
+window.onSubmitRegister = onSubmitRegister;
+
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
 

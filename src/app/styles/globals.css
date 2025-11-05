@@ -1,3 +1,12 @@
+:root {
+  --color-gray: #F5F6F9;
+  --color-white: #FFF;
+  
+  /* TEXT */
+  --text-off: #7D7D91;
+  --text-gray: #6C7278;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,25 +18,13 @@ html, body, #app {
   height: 100vh;
 }
 
-/* ======= CLASSES UTILITARIAS */
-.container {
-  width: 100%;
-  max-width: 100%;
-  padding: 1rem;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.flex-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* ======= TIPOGRAFIA */
 .h1 {
-  font-size: clamp(1.5rem, 5vw, 3.25rem);
+  font-size: clamp(1.5rem, 1.5vw, 2.3rem);
+}
+.caption {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  color: var(--text-gray);
 }
 
 /* ======= RESPONSIVIDADE */

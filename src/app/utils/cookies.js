@@ -29,8 +29,6 @@ class Cookies {
       c => c.indexOf(key) === 0
     )[0];
 
-    console.log({ requestedCookie });
-
     if (!requestedCookie) return null;
     const [_, cookieValue] = requestedCookie.split("=");
 

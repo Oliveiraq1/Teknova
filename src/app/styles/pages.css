@@ -1,4 +1,34 @@
-/* === Error page */
+/* ======= LOGIN PAGE */
+.lr-main {
+  gap: 2rem;
+}
+.lr-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+
+  padding-top: 1.03rem;
+}
+.lr-img-container {}
+.lr-img-container img {}
+.lr-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
+
+  max-width: 18rem;
+}
+
+/* ======= LOGIN PAGE */
+.lr-name-section {
+  display: flex;
+  gap: .8rem;
+}
+
+/* ======= ERROR PAGE */
 .error-main {
   display: flex;
   flex-direction: column;
@@ -12,3 +42,21 @@
   width: 35px;
   height: auto;
 }
+
+/* ======= RESPONSIVIDADE */
+// TABLET
+@media (min-width: 768px) {
+  /* ======= LOGIN PAGE */
+  .login-header-text {
+    background: red;
+  }
+}
+
+// LAPTOP
+@media (min-width: 1024px) {}
+
+// LAPTOP M
+@media (min-width: 1280px) {}
+
+// LAPTOP L
+@media (min-width: 1440px) {}
