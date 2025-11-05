@@ -1,4 +1,5 @@
 import Page404 from "../../pages/404.js";
+import LocalStorage from "./localstorage/localstorage.js";
 import { middleware } from "./middleware.js";
 
 window.addEventListener("hashchange", renderPage);
@@ -9,6 +10,8 @@ const routes = {
   register: { path: "pages/register.html" },
   login: { path: "pages/login.html" }
 }
+
+LocalStorage.load();
 
 function renderPage() {
   const path = window.location.hash.replace("#", "") || "home";
