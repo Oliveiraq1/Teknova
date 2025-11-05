@@ -1,6 +1,8 @@
-import { users } from "../data/users.js";
 import { cookieTypes } from "./cookies/cookie.types.js";
 import Cookies from "./cookies/cookies.js";
+import LocalStorage from "./localstorage/localstorage.js";
+import { localStorageTypes } from "./localstorage/localstorage.types.js";
+import { checkYears } from "./utils/checkYears.js";
 
 /* ======= AUTENTICACAO */
 window.login = function login(e) {
@@ -8,8 +10,8 @@ window.login = function login(e) {
 
   const cpf = document.getElementById("cpf").value;
   const password = document.getElementById("password").value;
-  if (!cpf || !password) return window.alert("Por favor, preencha todos os campos!");
 
+  const users = LocalStorage.get(localStorageTypes.USERS);
   const user = users.find(u => u.cpf == cpf);
   if (!user) return window.alert("Credenciais invalidas!");
 
@@ -28,9 +30,22 @@ window.register = function register(e) {
   const birthdate = document.getElementById("birthdate").value;
   const password = document.getElementById("password").value;
 
-  console.log({
-    name, last_name, cpf, email, birthdate, password
-  })
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const cpfUsed = users.find(user => user.cpf == cpf);
+  const emailUsed = users.find(user => user.email == email);
+  const greatherThan18 = checkYears(birthdate, 18);
+
+  if (cpfUsed) return window.alert("CPF ja cadastrado");
+  if (emailUsed) return window.alert("Email ja cadastrado");
+  if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
+
+  const user = LocalStorage.add(localStorageTypes.USERS, {
+    name, last_name, cpf, email, password
+  });
+
+  const { password: _, ...authData } = user;
+  Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...authData }));
+  window.location.hash = "#home";
 }
 
 window.changePasswordFileType = function changePasswordFileType(id) {
