@@ -1,6 +1,5 @@
 class Cookies {
   /**
-   * 
    * @param {string} key - Chave do cookie
    * @param {string} value - Valor do cookie
    * @param {number} [exp=cookieDeSessao] - Data de expiracao
@@ -16,7 +15,6 @@ class Cookies {
   }
 
   /**
-   * 
    * @param {string} key - Chave do cookie
    * @returns {string|null} Valor do cookie ou `null` caso nao encontrado
    */
@@ -33,6 +31,14 @@ class Cookies {
     const [_, cookieValue] = requestedCookie.split("=");
 
     return cookieValue;
+  }
+
+  /**
+   * @param {string} key - Chave do cookie
+   */
+  static delete(key) {
+    const now = new Date().toUTCString();
+    document.cookie = `${key}=;path=/;expires=${now}`;
   }
 }
 
