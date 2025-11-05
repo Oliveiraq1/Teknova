@@ -1,0 +1,87 @@
+/* Tags */
+input {
+  width: 100%;
+  padding: .68rem;
+  color: #000;
+
+  outline: none;
+  border: 2px solid var(--color-gray); /* #EDF1F3 */
+  border-radius: .5rem;
+}
+
+button {
+  background-color: #1D61E7;
+  color: var(--color-white);
+  padding: .8rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.95;
+}
+
+/* LoginRegisterSelector */
+.lrs-container {
+  width: 100%;
+  max-width: 20rem;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* === Selector */
+.lrs-selectors {
+  display: flex;
+  padding: .23rem;
+  gap: .3rem;
+  background-color: var(--color-gray);
+}
+.lrs-selector {
+  flex: 1;
+  padding: .5rem;
+}
+.lrs-selector a {
+  text-decoration: none;
+  color: var(--text-off);
+}
+.lrs-selector-selected {
+  background-color: var(--color-white);
+}
+.lrs-selector-selected a {
+  color: #000;
+}
+
+/* === Form */
+.lrs-form {
+  max-width: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.lrs-form-label {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-gray);
+  font-size: .85rem;
+
+  position: relative;
+}
+
+/* === PasswordInputChanger */
+.pswdIC {
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+}
+.pswdIC img {
+  width: 20px;
+  height: 20px;
+  color: var(--text-gray);
+  cursor: pointer;
+}
+.pswdIC-input {
+  padding-right: 2rem !important;
+}

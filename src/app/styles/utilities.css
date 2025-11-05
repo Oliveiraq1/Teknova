@@ -1,0 +1,49 @@
+/* ======= CLASSES UTILITARIAS */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  height: 100%;
+
+  overflow-x: hidden;
+}
+
+/* === Layout */
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Dimensoes */
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+
+.p-1 {
+  padding: .5rem;
+}
+.p-2 {
+  padding: .8rem;
+}
+
+/* === Bordas */
+.radius-sm {
+  border-radius: 0.4375rem;
+}
+.radius-md {
+  border-radius: .9rem;
+}
+.radius-lg {
+  border-radius: 1.2rem;
+}
+
+/* === Texto */
+.text-center {
+  text-align: center;
+}
