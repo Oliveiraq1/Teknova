@@ -1,3 +1,5 @@
+import { cookieTypes } from "./cookie.types.js";
+
 class Cookies {
   /**
    * @param {string} key - Chave do cookie
@@ -39,6 +41,23 @@ class Cookies {
   static delete(key) {
     const now = new Date().toUTCString();
     document.cookie = `${key}=;path=/;expires=${now}`;
+  }
+
+  /**
+   * @returns User
+   */
+  static getUser() {
+    const userAuth = this.get(cookieTypes.AUTHENTICATION);
+    const user = JSON.parse(userAuth);
+
+    return {
+      id: user.id,
+      name: user.name,
+      image_url: `https://api.dicebear.com/7.x/adventurer/svg?seed=${user.name}`,
+      email: user.email,
+      cpf: user.cpf,
+      last_name: user.last_name
+    }
   }
 }
 

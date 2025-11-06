@@ -3,12 +3,39 @@
   .container {
     max-width: 720px;
   }
+
+  /* ======= Paginas */
+  .group-post-container {
+    align-items: center;
+  }
 }
 
 @media (min-width: 1024px) { // LAPTOP
   /* ======= Classes Utilitarias */
   .container {
     max-width: 960px;
+  }
+
+  /* ======= Paginas */
+  /* === Group */
+  .group-header {
+    min-height: 180px;
+    margin-bottom: 3rem;
+  }
+  .group-header__details {
+    justify-content: space-around;
+  }
+  .group-header__group-img {
+    width: 6rem;
+    height: 6rem;
+  }
+  .group-header__details-title {
+    font-size: 1.5rem;
+  }
+
+  /* ======= Components */
+  .post-container {
+    max-width: 900px !important;
   }
 }
 
