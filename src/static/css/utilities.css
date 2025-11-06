@@ -34,6 +34,15 @@
 .h-full {
   height: 100%;
 }
+.hidden {
+  display: none;
+}
+.relative {
+  position: relative;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
 
 /* ======= Decoracoes */
 .radius-sm {

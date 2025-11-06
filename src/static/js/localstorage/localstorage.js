@@ -1,4 +1,6 @@
 import users from "../../data/users.js";
+import groups from "../../data/groups.js";
+
 import { localStorageTypes } from "./localstorage.types.js";
 
 class LocalStorage {
@@ -33,8 +35,34 @@ class LocalStorage {
   static load() {
     const usersField = localStorage.getItem(localStorageTypes.USERS);
     const postsField = localStorage.getItem(localStorageTypes.POSTS);
+    const groupsField = localStorage.getItem(localStorageTypes.GROUPS);
 
     if (!usersField) localStorage.setItem(localStorageTypes.USERS, JSON.stringify(users));
+    if (!groupsField) localStorage.setItem(localStorageTypes.GROUPS, JSON.stringify(groups));
+  }
+
+  /**
+   * 
+   * @param {string} groupId - Id do grupo
+   * @param {string} postId - Id do post
+   * @param {object} comment - Objeto Comentario
+   * @returns 
+   */
+  static groupPostAddComment(groupId, postId, comment) {
+    const groups = localStorage.getItem(localStorageTypes.GROUPS);
+    const groupArray = JSON.parse(groups);
+
+    const groupIndex = groupArray.findIndex(g => g.id == groupId);
+    if (groupIndex == -1) return;
+
+    const postIndex = groupArray[groupIndex].posts.findIndex(p => p.id == postId);
+    if (postIndex == -1) return;
+
+    groupArray[groupIndex]
+      .posts[postIndex]
+      .comments.push(comment);
+
+    localStorage.setItem(localStorageTypes.GROUPS, JSON.stringify(groupArray));
   }
 }
 

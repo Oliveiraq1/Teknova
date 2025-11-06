@@ -16,7 +16,7 @@ window.login = function login(e) {
   if (!user) return window.alert("Credenciais invalidas!");
   if (password != user.password) return window.alert("Credenciais invalidas!");
 
-  const { password: _, ...authData } = user;
+  const { password: _, image_url: __, ...authData } = user;
   Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...authData }));
   window.location.hash = "#home";
 }
@@ -61,4 +61,14 @@ window.changePasswordFileType = function changePasswordFileType(id) {
     input.type = "text";
     icon.src = "/static/assets/icons/password-eye-slash.svg";
   }
+}
+
+/* ======= Feed & Grupos */
+window.createPost = function createPost(groupId) {
+  window.alert("Funcao a ser implementada")
+}
+
+window.joinRequest = function joinRequest(groupId) {
+  window.alert("Funcao a ser implementada");
+  window.location.hash = "#home";
 }
