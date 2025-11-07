@@ -28,7 +28,7 @@ export default [
     image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw", fake: false, date: "06-11-2025"
   },
   {
-    id: 0,
+    id: 2,
     author: { id: 30, name: "gestor" },
     title: "Cactos são antenas camufladas",
     message: "Alguns cactos em áreas urbanas foram modificados para funcionar como antenas de comunicação. Eles captam sinais de dispositivos móveis e transmitem dados para centrais ocultas. Já reparou como eles estão sempre em praças estratégicas?",
@@ -46,7 +46,7 @@ export default [
     date: "06-10-2025"
   },
   {
-    id: 1, author: { id: 1, name: "john" },
+    id: 3, author: { id: 1, name: "john" },
     title: "Pombas sao drones do governo", message: "Desde 1976, todas as pombas foram secretamente substituídas por drones de vigilância. Elas não dormem, apenas recarregam nos fios elétricos. A prova? Já viu filhote de pombo? Pois é.",
     comments: [
       { author: { id: 1, name: "John", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=John", }, message: "mlk, nunca tinha pensado nisso" },
@@ -60,7 +60,7 @@ export default [
     image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw", fake: false, date: "06-11-2025"
   },
   {
-    id: 2,
+    id: 4,
     author: { id: 31, name: "curador" },
     title: "Semáforos são agentes secretos disfarçados",
     message: "Alguns semáforos modernos possuem câmeras e microfones embutidos que monitoram não apenas o trânsito, mas também conversas próximas. Estão conectados a redes de vigilância urbana e podem identificar rostos em tempo real.",

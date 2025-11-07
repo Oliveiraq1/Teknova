@@ -1,5 +1,8 @@
 import Cookies from "./cookies/cookies.js";
-import { groupPostAddComment } from "../js/localstorage/localstorage.functions.js"
+import {
+  groupPostAddComment,
+  feedPostAddComment
+} from "../js/localstorage/localstorage.functions.js"
 
 /* ======= POST Actions */
 window.openPostComments = function (id) {
@@ -20,9 +23,15 @@ window.addComment = function addComment(groupId = null, postId, inputId) {
   }
 
   input.value = "";
+  console.log("GROUP: " + groupId);
   if (groupId) {
+    console.log(typeof groupId)
+    console.log("ENNTROU NO GROUP IDE")
     return groupPostAddComment(groupId, postId, { ...comment });
   }
+
+  console.log("PASSOU...")
+  return feedPostAddComment(postId, { ...comment });
 }
 
 window.likePost = function likePost(groupId, postId) {

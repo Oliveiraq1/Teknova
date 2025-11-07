@@ -17,19 +17,31 @@ export function addUser(user) {
 /* ======= Posts */
 export function groupPostAddComment(groupId, postId, comment) {
   const groups = LocalStorage.get(localStorageTypes.GROUPS);
-  const groupArray = JSON.parse(groups);
 
-  const groupIndex = groupArray.findIndex(g => g.id == groupId);
+  const groupIndex = groups.findIndex(g => g.id == groupId);
   if (groupIndex == -1) return;
 
-  const postIndex = groupArray[groupIndex].posts.findIndex(p => p.id == postId);
+  const postIndex = groups[groupIndex].posts.findIndex(p => p.id == postId);
   if (postIndex == -1) return;
 
-  groupArray[groupIndex]
+  groups[groupIndex]
     .posts[postIndex]
     .comments.push(comment);
 
-  localStorage.setItem(localStorageTypes.GROUPS, JSON.stringify(groupArray));
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+}
+
+export function feedPostAddComment(postId, comment) {
+  console.log("HUMM TO AQ");
+  const posts = LocalStorage.get(localStorageTypes.POSTS);
+
+  const postIndex = posts.findIndex(p => p.id == postId);
+  if (postIndex == -1) return;
+
+  posts[postIndex]
+    .comments.push(comment);
+
+  LocalStorage.set(localStorageTypes.POSTS, posts);
 }
 
 /* ======= Notifications */
