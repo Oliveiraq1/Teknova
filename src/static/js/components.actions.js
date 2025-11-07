@@ -26,10 +26,14 @@ window.addComment = function addComment(groupId = null, postId, inputId) {
 }
 
 window.likePost = function likePost(groupId, postId) {
-  window.alert("Funcao a ser implementada.")
+  if (!groupId) return window.alert("Implementar funcao para feed")
+  window.alert("Implementar funcao para grupos.")
 }
 
 window.reportPost = function reportPost(groupId, postId) {
+  if (!groupId) return window.alert("Implementar funcao para feed")
+  window.alert("Implementar funcao para grupos.")
+
   const confirm = window.confirm("Tem certeza que deseja denunciar esse post?");
   if (!confirm) return;
 

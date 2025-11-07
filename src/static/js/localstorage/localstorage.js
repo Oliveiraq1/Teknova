@@ -3,6 +3,7 @@ import groups from "../../data/groups.js";
 import notifications from "../../data/notifications.js";
 
 import { localStorageTypes } from "./localstorage.types.js";
+import posts from "../../data/posts.js";
 
 class LocalStorage {
   static get(key) {
@@ -24,10 +25,12 @@ class LocalStorage {
     const usersField = this.get(localStorageTypes.USERS);
     const groupsField = this.get(localStorageTypes.GROUPS);
     const notificationsField = this.get(localStorageTypes.NOTIFICATIONS);
+    const postsField = this.get(localStorageTypes.POSTS);
 
-    if (!usersField) localStorage.setItem(localStorageTypes.USERS, JSON.stringify(users));
-    if (!groupsField) localStorage.setItem(localStorageTypes.GROUPS, JSON.stringify(groups));
-    if (!notificationsField) localStorage.setItem(localStorageTypes.NOTIFICATIONS, JSON.stringify(notifications));
+    if (!usersField) this.set(localStorageTypes.USERS, users);
+    if (!groupsField) this.set(localStorageTypes.GROUPS, groups);
+    if (!notificationsField) this.set(localStorageTypes.NOTIFICATIONS, notifications);
+    if (!postsField) this.set(localStorageTypes.POSTS, posts);
   }
 }
 
