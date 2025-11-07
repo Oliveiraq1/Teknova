@@ -3,7 +3,6 @@ import LocalStorage from "./localstorage/localstorage.js";
 import { middleware } from "./middleware.js";
 import { renderGroup } from "../../pages/groups/group.js";
 import { renderNotifications } from "../../pages/notifications/notifications.js";
-// import { renderTest } from "../../pages/test/test.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
@@ -37,7 +36,6 @@ function renderPage() {
       document.getElementById("app").innerHTML = html;
       if (path == "group") { renderGroup(params) };
       if (path == "notifications") { renderNotifications() };
-      // if (path == "test") { renderTest(params) };
     })
     .catch(() => {
       document.getElementById("app").innerHTML = Page404();

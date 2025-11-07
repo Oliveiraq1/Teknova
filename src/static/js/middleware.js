@@ -4,7 +4,6 @@ import Cookies from "./cookies/cookies.js"
 const public_routes = [
   { path: "login", whenAuthenticated: "redirect" },
   { path: "register", whenAuthenticated: "redirect" },
-  // { path: "test", whenAuthenticated: "next" },
 ]
 
 export function middleware(route) {

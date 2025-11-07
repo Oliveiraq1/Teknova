@@ -3,6 +3,17 @@ import LocalStorage from "./localstorage.js"
 import { localStorageTypes } from "./localstorage.types.js"
 import { todayDate } from "../utils/date.utils.js";
 
+/* ======= Users */
+export function addUser(user) {
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const data = { id: users.length, image_url: `https://api.dicebear.com/7.x/adventurer/svg?seed=${user.name}`, ...user };
+  users.push(data);
+
+  LocalStorage.set(localStorageTypes.USERS, users);
+  const { image_url, password, ...rest } = data;
+  return rest;
+}
+
 /* ======= Posts */
 export function groupPostAddComment(groupId, postId, comment) {
   const groups = LocalStorage.get(localStorageTypes.GROUPS);
