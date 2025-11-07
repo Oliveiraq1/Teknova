@@ -2,7 +2,7 @@ import { cookieTypes } from "./cookies/cookie.types.js";
 import Cookies from "./cookies/cookies.js";
 import LocalStorage from "./localstorage/localstorage.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
-import { checkYears } from "./utils/checkYears.js";
+import { checkYears } from "./utils/date.utils.js";
 
 /* ======= AUTENTICACAO */
 window.login = function login(e) {
