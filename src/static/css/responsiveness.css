@@ -5,6 +5,13 @@
   }
 
   /* ======= Paginas */
+  /* === Login & Register */
+  .lr-main__border {
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 .8rem rgba(0,0,0,.1)
+  }
+
   /* === GROUP */
   .group-post-container {
     align-items: center;
