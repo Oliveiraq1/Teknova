@@ -62,24 +62,40 @@ window.changePasswordFileType = function changePasswordFileType(id) {
 
 /* ======= Feed & Grupos */
 
-window.hide = function hide(){
+window.hide = function hide() {
   document.getElementById("lupa").style.display = "none"
   document.getElementById("search").placeholder = ""
 }
 
-window.show = function show(){
-  if(document.getElementById("search").value == ""){
+window.show = function show() {
+  if (document.getElementById("search").value == "") {
     document.getElementById("lupa").style.display = ""
   }
   document.getElementById("search").placeholder = "     Buscar"
 }
 
-window.search = function search(){
-  
+window.search = function search() {
+
 }
+
+/* ======= Grupos */
 
 window.createPost = function createPost(groupId) {
   window.alert("Funcao a ser implementada")
+}
+
+window.joinPublicGroup = function joinPublicGroup(groupId) {
+  const user = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const groupIndex = groups.findIndex(g => g.id == groupId);
+
+  groups[groupIndex]
+    .users_id.push(user.id);
+
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  window.location.reload();
+  window.alert(`Bem-vindo(a) ao grupo ${groups[groupIndex].name}`);
 }
 
 window.joinRequest = function joinRequest(groupId) {

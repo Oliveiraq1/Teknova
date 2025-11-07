@@ -21,7 +21,7 @@ const renderPrivateGroup = ({ group }) => {
     </header>
     <main class="private-group">
       <p class="private-group__title">Grupo privado</p>
-      <button class="group-header__details-button" onclick="createPost('${group.id}')">Novo Post</button>
+      <button class="group-header__details-button" onclick="createPost('${group.id}')">Pedir para entrar</button>
     </main>
   `)
 
@@ -43,7 +43,7 @@ const renderPublicGroup = ({ group, user }) => {
       <div class="flex-center">
         <div class="group-header__details">
           <p class="group-header__details-title">g/${group.name}</p>
-          <button class="group-header__details-button" onclick="createPost('${group.id}')">Entrar no grupo</button>
+          <button class="group-header__details-button" onclick="joinPublicGroup('${group.id}')">Entrar no grupo</button>
         </div>
       </div>
     </header>
