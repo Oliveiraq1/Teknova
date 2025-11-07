@@ -1,7 +1,7 @@
 import LocalStorage from "../../static/js/localstorage/localstorage.js";
-import { localStorageTypes } from "../../static/js/localstorage/localstorage.types.js";
 import Cookies from "../../static/js/cookies/cookies.js";
 import post from "../../components/post.js";
+import { localStorageTypes } from "../../static/js/localstorage/localstorage.types.js";
 
 /* ======= Usuario nao eh membro */
 const renderPrivateGroup = ({ group }) => {

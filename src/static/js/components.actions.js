@@ -1,5 +1,5 @@
 import Cookies from "./cookies/cookies.js";
-import LocalStorage from "./localstorage/localstorage.js";
+import { groupPostAddComment } from "../js/localstorage/localstorage.functions.js"
 
 /* ======= POST Actions */
 window.openPostComments = function (id) {
@@ -21,7 +21,7 @@ window.addComment = function addComment(groupId = null, postId, inputId) {
 
   input.value = "";
   if (groupId) {
-    return LocalStorage.groupPostAddComment(groupId, postId, { ...comment });
+    return groupPostAddComment(groupId, postId, { ...comment });
   }
 }
 

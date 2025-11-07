@@ -1,8 +1,9 @@
-import { cookieTypes } from "./cookies/cookie.types.js";
 import Cookies from "./cookies/cookies.js";
 import LocalStorage from "./localstorage/localstorage.js";
+import { cookieTypes } from "./cookies/cookie.types.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
-import { checkYears } from "./utils/checkYears.js";
+import { checkYears } from "./utils/date.utils.js";
+import { addUser } from "./localstorage/localstorage.functions.js";
 
 /* ======= AUTENTICACAO */
 window.login = function login(e) {
@@ -40,12 +41,8 @@ window.register = function register(e) {
   if (emailUsed) return window.alert("Email ja cadastrado");
   if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
 
-  const user = LocalStorage.add(localStorageTypes.USERS, {
-    name, last_name, cpf, email, password
-  });
-
-  const { password: _, ...authData } = user;
-  Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...authData }));
+  const user = addUser({ name, last_name, cpf, email, password });
+  Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...user }));
   window.location.hash = "#home";
 }
 

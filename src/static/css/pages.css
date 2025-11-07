@@ -189,4 +189,55 @@
 
 .c{
   border-style: dotted;
+/* ======= NOTIFICATIONS */
+.notifications-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 2.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+
+  background-color: var(--color-gray);
+  padding: .8rem;
+  border-radius: .5rem;
+}
+.notifications-header img {
+  position: absolute;
+  width: 1.8rem;
+  height: 1.8rem;
+
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3%;
+  cursor: pointer;
+}
+.notifications-main {
+  height: 100%;
+  overflow-y: auto;
+  max-height: 90%;
+}
+.bell-idle {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.zeroNotifications__data {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.zeroNotifications__title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.zeroNotifications__description {
+  color: var(--text-off);
+  font-size: 1rem;
+  text-align: center;
 }
