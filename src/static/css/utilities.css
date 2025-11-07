@@ -55,6 +55,15 @@
   border-radius: 1.2rem;
 }
 
+/* ======= Espaçamento */
+.margin-right{
+  margin-right: 10px;
+}
+
+.margin-left{
+  margin-left: 10px;
+}
+
 /* ======= Texto */
 .text-center {
   text-align: center;

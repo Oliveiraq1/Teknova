@@ -118,3 +118,75 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* ======= Home/Feed */
+.font{
+  font-family: "Open", sans-serif;
+}
+
+#teste{
+  border-style: dotted;
+}
+.search{
+  width: 250px;
+  margin-left: 10px;
+}
+
+.icon{
+  position: absolute;
+  height: 15px;
+}
+
+#lupa{
+  left: 29%;
+  top: 30px;
+}
+
+#verify{
+  left: 55px;
+  top: 82.5px;
+}
+
+#star{
+  left: 159px;
+  top: 82.5px;
+}
+
+#follow-home{
+  padding-left: 18px;
+}
+
+#save{
+  padding-left: 16px;
+}
+
+#fire{
+  left: 245px;
+  top: 82.5px;
+}
+
+#in-fire{
+  padding-left: 15px;
+}
+
+#head{
+  display: flex;
+  flex-direction: row;
+}
+
+#button-pages{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+}
+
+#post{
+  width: 100%;
+  height: 70%;
+  border: 1.5px solid var(--color-gray);
+}
+
+.c{
+  border-style: dotted;
+}

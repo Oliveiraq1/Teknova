@@ -64,6 +64,23 @@ window.changePasswordFileType = function changePasswordFileType(id) {
 }
 
 /* ======= Feed & Grupos */
+
+window.hide = function hide(){
+  document.getElementById("lupa").style.display = "none"
+  document.getElementById("search").placeholder = ""
+}
+
+window.show = function show(){
+  if(document.getElementById("search").value == ""){
+    document.getElementById("lupa").style.display = ""
+  }
+  document.getElementById("search").placeholder = "     Buscar"
+}
+
+window.search = function search(){
+  
+}
+
 window.createPost = function createPost(groupId) {
   window.alert("Funcao a ser implementada")
 }
