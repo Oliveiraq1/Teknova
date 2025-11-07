@@ -34,12 +34,12 @@ const post = ({ group = null, posts = null, user }) => {
         `) : (`
           <div class="flex post-action-icons">
             <div class="flex post-actions-icons__left">
-              <img src="../static/assets/icons/like-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="likePost('${group ? group.id : null}', '${post.id}')" />
+              <img src="../static/assets/icons/like-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="likePost(${group ? `${group.id}` : null}, '${post.id}')" />
               <img src="../static/assets/icons/comments.svg" alt="like-button" class="post-actions-icons__icon" onclick="openPostComments('post-${post.id}')" />
             </div>
             <div class="flex post-actions-icons__right">
               <span class="post-actions__date">${post.date}</span>
-              <img src="../static/assets/icons/warning-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="reportPost('${group ? group.id : null}', '${post.id}')" />
+              <img src="../static/assets/icons/warning-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="reportPost(${group ? `${group.id}` : null}, '${post.id}')" />
             </div>
           </div>
         `)}
@@ -48,7 +48,7 @@ const post = ({ group = null, posts = null, user }) => {
           <hr />
           <div class="flex post-input-area">
             <input type="text" placeholder="Digite seu comentario" id="post-input-${post.id}" class="post-input__field" />
-            <img src="../static/assets/icons/send.svg" alt="send comment" class="post-input__img" onclick="addComment('${group ? group.id : null}', '${post.id}', 'post-input-${post.id}')">
+            <img src="../static/assets/icons/send.svg" alt="send comment" class="post-input__img" onclick="addComment(${group ? `${group.id}` : null}, '${post.id}', 'post-input-${post.id}')">
           </div>
           ${post.comments.reverse().map(comment => (`
             <div class="flex post-comment">
