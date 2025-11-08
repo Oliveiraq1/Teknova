@@ -11,11 +11,11 @@ const post = ({ group = null, posts = null, user }) => {
         <div class="flex post-header">
           <div class="flex post-header__user">
             <img 
-              src="https://api.dicebear.com/7.x/adventurer/svg?seed=${post.author.name}"
+              src="https://api.dicebear.com/7.x/adventurer/svg?seed=${post.author.fullname}"
               alt="image_url"
               class="post-user-picture"
             />
-            <p>${post.author.name}</p>
+            <p>${post.author.fullname}</p>
           </div>
           ${group ? `<span class="post-group-name">${group.name}</span>` : ""}
         </div>
@@ -37,10 +37,29 @@ const post = ({ group = null, posts = null, user }) => {
               <img id="like-btn-${post.id}" src="${post.likes.includes(user.id) ? '/static/assets/icons/like-filled.svg' : '/static/assets/icons/like.svg'}" alt="like-button" class="post-actions-icons__icon" onclick="toggleLike(${group ? `${group.id}` : null}, '${post.id}')" />
               <img src="../static/assets/icons/comments.svg" alt="like-button" class="post-actions-icons__icon" onclick="openPostComments('post-${post.id}')" />
               <img src="../static/assets/icons/star-sharp-transparent-border-bfbfbf.svg" alt="save-button" class="post-actions-icons__icon"/>
+              <img
+                id="like-btn-${post.id}"
+                src="/static/assets/icons/${post.likes.includes(user.id) ? 'like-filled.svg' : 'like.svg'}"
+                alt="like-button"
+                class="post-actions-icons__icon"
+                onclick="toggleLike(${group ? `${group.id}` : null}, '${post.id}')"
+              />
+              <img 
+                src="/static/assets/icons/comments.svg"
+                alt="like-button"
+                class="post-actions-icons__icon"
+                onclick="openPostComments('post-${post.id}')"
+              />
             </div>
             <div class="flex post-actions-icons__right">
               <span class="post-actions__date">${post.date}</span>
-              <img src="../static/assets/icons/warning-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="reportPost(${group ? `${group.id}` : null}, '${post.id}')" />
+              <img
+                id="report-btn-${post.id}"
+                src="/static/assets/icons/${post.denounces.includes(user.id) ? 'warning-filled.svg' : 'warning.svg'}"
+                alt="like-button"
+                class="post-actions-icons__icon"
+                onclick="${post.denounces.includes(user.id) ? `removeReportPost(${group ? group.id : null}, ${post.id})` : `reportPost(${group ? group.id : null}, ${post.id})`}"
+              />
             </div>
           </div>
         `)}

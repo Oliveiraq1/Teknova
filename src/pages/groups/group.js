@@ -21,7 +21,7 @@ const renderPrivateGroup = ({ group }) => {
     </header>
     <main class="private-group">
       <p class="private-group__title">Grupo privado</p>
-      <button class="group-header__details-button" onclick="createPost('${group.id}')">Pedir para entrar</button>
+      <button class="group-header__details-button" onclick="groupRequest('${group.id}')">Pedir para entrar</button>
     </main>
   `)
 

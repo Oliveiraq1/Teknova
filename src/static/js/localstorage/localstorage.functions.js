@@ -26,7 +26,7 @@ export function groupAddPost(groupId, post) {
     id: groups[groupIndex].posts.length,
     author: {
       id: user.id,
-      name: user.name
+      fullname: `${user.name} ${user.last_name}`
     },
     comments: [],
     date: todayDate(),
@@ -34,7 +34,8 @@ export function groupAddPost(groupId, post) {
     image_url: post.image_url,
     likes: [],
     message: post.message,
-    title: post.title
+    title: post.title,
+    denounces: []
   }
   groups[groupIndex]
     .posts.push(data);
@@ -82,7 +83,9 @@ export function feedPostAddComment(postId, comment) {
 export function createNotification({ title, message, target, moveTo = null }) {
   if (!title || !message || !target) return;
 
+  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
   const data = {
+    id: notifications.length,
     title,
     message,
     target,
@@ -90,7 +93,6 @@ export function createNotification({ title, message, target, moveTo = null }) {
     date: todayDate()
   }
 
-  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
   notifications.push(data);
   LocalStorage.set(localStorageTypes.NOTIFICATIONS, notifications);
 }

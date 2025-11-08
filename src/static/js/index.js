@@ -4,6 +4,7 @@ import { middleware } from "./middleware.js";
 import { renderGroup } from "../../pages/groups/group.js";
 import { renderNotifications } from "../../pages/notifications/notifications.js";
 import { renderHomePosts } from "../../pages/home/home.js";
+import { renderAdminDashboard } from "../../pages/admin/admin.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
@@ -13,7 +14,8 @@ const routes = {
   register: { path: "pages/register.html" },
   login: { path: "pages/login.html" },
   group: { path: "pages/groups/group.html" },
-  notifications: { path: "pages/notifications/notifications.html" }
+  notifications: { path: "pages/notifications/notifications.html" },
+  admin: { path: "pages/admin/admin.html" },
 }
 
 LocalStorage.load();
@@ -38,6 +40,8 @@ function renderPage() {
       if (path == "group") { renderGroup(params) };
       if (path == "notifications") { renderNotifications() };
       if (path == "home") { renderHomePosts(), renderNav() };
+      if (path == "home") { renderHomePosts() };
+      if (path == "admin") { renderAdminDashboard() };
     })
     .catch((error) => {
       console.log(error);

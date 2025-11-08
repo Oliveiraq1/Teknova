@@ -41,7 +41,7 @@ window.register = function register(e) {
   if (emailUsed) return window.alert("Email ja cadastrado");
   if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
 
-  const user = addUser({ name, last_name, cpf, email, password });
+  const user = addUser({ name, last_name, cpf, email, password, birthdate, admin: false, active: true });
   Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...user }));
   window.location.hash = "#home";
 }
@@ -102,6 +102,35 @@ window.createPost = function createPost(groupId) {
   groupAddPost(groupId, { title, message, image_url });
   window.alert("Post adicionado com sucesso!")
   window.location.reload();
+}
+
+window.groupRequest = function groupRequest(groupId) {
+  const { id: user_id, name, last_name } = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS);
+
+  const pendingRequest = requests.find(r => r.user.id == user_id && r.group.id == groupId);
+  if (pendingRequest) {
+    window.alert("Ja ha um pedido seu em analise!");
+    return;
+  }
+
+  const { name: group_name } = groups[groupId];
+  const data = {
+    id: requests.length,
+    user: {
+      id: user_id,
+      fullname: `${name} ${last_name}`
+    },
+    group: {
+      id: groupId,
+      name: group_name
+    }
+  }
+
+  requests.push(data);
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, requests);
+  window.alert("Pedido feito com sucesso. Em breve voce sera informado(a) do status de sua solicitacao!");
 }
 
 /* ======= Grupos */
