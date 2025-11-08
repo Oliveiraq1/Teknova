@@ -5,10 +5,13 @@ import { localStorageTypes } from "./localstorage/localstorage.types.js";
 import {
   groupPostAddComment,
   feedPostAddComment,
-  createNotification
+  createNotification,
 } from "../js/localstorage/localstorage.functions.js"
 
-import { renderUsersTable } from "../../pages/admin/admin.js";
+import {
+  renderUsersTable,
+  renderGroupRequestsTable
+} from "../../pages/admin/admin.js";
 
 /* ======= POST Actions */
 function togglePostLike({ userId, postId }) {
@@ -87,15 +90,158 @@ window.toggleLike = function toggleLike(groupId, postId) {
   return togglePostLike({ userId, postId });
 }
 
-window.reportPost = function reportPost(groupId, postId) {
-  if (!groupId) return window.alert("Implementar funcao para feed")
-  window.alert("Implementar funcao para grupos.")
+function reportFeedPost(postId) {
+  const warningElement = document.getElementById(`report-btn-${postId}`);
+  const { id: user_id } = Cookies.getUser();
 
-  const confirm = window.confirm("Tem certeza que deseja denunciar esse post?");
-  if (!confirm) return;
+  const posts = LocalStorage.get(localStorageTypes.POSTS);
+  const reports = LocalStorage.get(localStorageTypes.REPORTS) || [];
+  const reportIndex = reports.findIndex(r => !r.group && r.post?.id === postId);
 
-  const motivo = window.prompt("Digite o motivo");
-  if (motivo) window.alert("Sua denuncia foi enviada para avaliacao de nossos administradores!");
+  posts[postId].denounces = posts[postId].denounces || [];
+  posts[postId].denounces.push(user_id);
+  LocalStorage.set(localStorageTypes.POSTS, posts);
+
+  warningElement.src = "/static/assets/icons/warning-filled.svg";
+  warningElement.setAttribute("onclick", `removeReportPost(null, ${postId})`);
+
+  if (reportIndex !== -1) {
+    reports[reportIndex].denounces.push(user_id);
+    LocalStorage.set(localStorageTypes.REPORTS, reports);
+    return;
+  }
+
+  const post = posts[postId];
+  const data = {
+    group: null,
+    post: {
+      id: post.id,
+      title: post.title,
+      message: post.message,
+      image_url: post.image_url,
+      author: {
+        id: post.author.id,
+        fullname: post.author.fullname
+      }
+    },
+    denounces: [user_id]
+  };
+
+  reports.push(data);
+  LocalStorage.set(localStorageTypes.REPORTS, reports);
+}
+
+function removeReportFeedPost(postId) {
+  const warningElement = document.getElementById(`report-btn-${postId}`);
+  const { id: user_id } = Cookies.getUser();
+
+  const posts = LocalStorage.get(localStorageTypes.POSTS);
+  const reports = LocalStorage.get(localStorageTypes.REPORTS) || [];
+  const reportIndex = reports.findIndex(r => !r.group && r.post?.id === postId);
+
+  const postDenounces = posts[postId].denounces || [];
+  posts[postId].denounces = postDenounces.filter(id => id !== user_id);
+  LocalStorage.set(localStorageTypes.POSTS, posts);
+
+  warningElement.src = "/static/assets/icons/warning.svg";
+  warningElement.setAttribute("onclick", `reportPost(null, ${postId})`);
+
+  if (reportIndex !== -1) {
+    const reportDenounces = reports[reportIndex].denounces || [];
+    reports[reportIndex].denounces = reportDenounces.filter(id => id !== user_id);
+
+    if (reports[reportIndex].denounces.length === 0) {
+      reports.splice(reportIndex, 1);
+    }
+
+    LocalStorage.set(localStorageTypes.REPORTS, reports);
+  }
+}
+
+function reportGroupPost(groupId, postId) {
+  const warningElement = document.getElementById(`report-btn-${postId}`);
+  const { id: user_id } = Cookies.getUser();
+
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const reports = LocalStorage.get(localStorageTypes.REPORTS);
+  const reportIndex = reports.findIndex(r => r.group?.id === groupId && r.post?.id === postId);
+
+  groups[groupId].posts[postId].denounces.push(user_id);
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  warningElement.src = "/static/assets/icons/warning-filled.svg";
+  warningElement.setAttribute("onclick", `removeReportPost(${groupId}, ${postId})`);
+
+  if (reportIndex != -1) {
+    reports[reportIndex].denounces.push(user_id);
+    LocalStorage.set(localStorageTypes.REPORTS, reports);
+    return;
+  }
+
+  const post = groups[groupId].posts[postId];
+  const data = {
+    group: {
+      id: groupId,
+      name: groups[groupId].name
+    },
+    post: {
+      id: post.id,
+      title: post.title,
+      message: post.message,
+      image_url: post.image_url,
+      author: {
+        id: post.author.id,
+        fullname: post.author.fullname
+      }
+    },
+    denounces: [user_id]
+  }
+
+  reports.push(data);
+  LocalStorage.set(localStorageTypes.REPORTS, reports);
+};
+
+function removeReportGroupPost(groupId, postId) {
+  const warningElement = document.getElementById(`report-btn-${postId}`);
+  const { id: user_id } = Cookies.getUser();
+
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const reports = LocalStorage.get(localStorageTypes.REPORTS);
+  const reportIndex = reports.findIndex(r => r.group?.id === groupId && r.post?.id === postId);
+
+  const postDenounces = groups[groupId].posts[postId].denounces || [];
+  groups[groupId].posts[postId].denounces = postDenounces.filter(id => id !== user_id);
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  warningElement.src = "/static/assets/icons/warning.svg";
+  warningElement.setAttribute("onclick", `reportPost(${groupId}, ${postId})`);
+
+  if (reportIndex !== -1) {
+    const reportDenounces = reports[reportIndex].denounces || [];
+    reports[reportIndex].denounces = reportDenounces.filter(id => id !== user_id);
+
+    if (reports[reportIndex].denounces.length === 0) {
+      reports.splice(reportIndex, 1);
+    }
+
+    LocalStorage.set(localStorageTypes.REPORTS, reports);
+  }
+}
+
+window.reportPost = function reportPost(groupId = null, postId) {
+  const ok = window.confirm("Voce tem certeza que deseja denunciar essa postagem?");
+  if (!ok) return;
+
+  if (!groupId) return reportFeedPost(postId);
+  return reportGroupPost(groupId, postId);
+}
+
+window.removeReportPost = function removeReportPost(groupId = null, postId) {
+  const ok = window.confirm("Voce tem certeza que deseja remover a denuncia dessa postagem?");
+  if (!ok) return;
+
+  if (!groupId) return removeReportFeedPost(postId);
+  return removeReportGroupPost(groupId, postId);
 }
 
 /* ======= ADMIN Actions */
@@ -180,3 +326,53 @@ window.unblockUserAccess = function (userId) {
   window.alert(`O acesso de ${user.name} ${user.last_name} foi desbloqueado!`);
   renderUsersTable();
 }
+
+/* REPORT TABLE */
+
+/* REQUESTS TABLE */
+window.approveGroupRequest = (id) => {
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS) || [];
+  const request = requests.find(r => r.id === id);
+  if (!request) return;
+
+  const groupId = request.group.id;
+  const groupName = request.group.name;
+  const userId = request.user.id;
+
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  groups[groupId].users_id.push(userId);
+
+  const updatedRequests = requests.filter(r => r.id !== id);
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, updatedRequests);
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  createNotification({
+    title: "Entrada de grupo",
+    message: `Seu pedido para entrar no grupo ${groupName}, foi aceito!`,
+    moveTo: `#group?id=${groupId}`,
+    target: [userId]
+  })
+
+  window.alert("Uma notificacao foi enviada ao usuario, informando que a permissao foi concedida!");
+  renderGroupRequestsTable();
+};
+
+window.denyGroupRequest = (id) => {
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS) || [];
+  const request = requests.find(r => r.id === id);
+  const updatedRequests = requests.filter(r => r.id !== id);
+
+  const userId = request.user.id;
+  const groupName = request.group.name;
+
+  createNotification({
+    title: "Entrada de grupo",
+    message: `Seu pedido para entrar no grupo ${groupName}, foi negado!`,
+    moveTo: null,
+    target: [userId]
+  })
+
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, updatedRequests);
+  window.alert("Uma notificacao foi enviada ao usuario, informando que a permissao foi negada!");
+  renderGroupRequestsTable();
+};

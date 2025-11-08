@@ -104,6 +104,35 @@ window.createPost = function createPost(groupId) {
   window.location.reload();
 }
 
+window.groupRequest = function groupRequest(groupId) {
+  const { id: user_id, name, last_name } = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS);
+
+  const pendingRequest = requests.find(r => r.user.id == user_id && r.group.id == groupId);
+  if (pendingRequest) {
+    window.alert("Ja ha um pedido seu em analise!");
+    return;
+  }
+
+  const { name: group_name } = groups[groupId];
+  const data = {
+    id: requests.length,
+    user: {
+      id: user_id,
+      fullname: `${name} ${last_name}`
+    },
+    group: {
+      id: groupId,
+      name: group_name
+    }
+  }
+
+  requests.push(data);
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, requests);
+  window.alert("Pedido feito com sucesso. Em breve voce sera informado(a) do status de sua solicitacao!");
+}
+
 /* ======= Grupos */
 window.joinPublicGroup = function joinPublicGroup(groupId) {
   const user = Cookies.getUser();
