@@ -26,7 +26,7 @@ export function groupAddPost(groupId, post) {
     id: groups[groupIndex].posts.length,
     author: {
       id: user.id,
-      name: user.name
+      fullname: `${user.name} ${user.last_name}`
     },
     comments: [],
     date: todayDate(),
@@ -34,7 +34,8 @@ export function groupAddPost(groupId, post) {
     image_url: post.image_url,
     likes: [],
     message: post.message,
-    title: post.title
+    title: post.title,
+    denounces: []
   }
   groups[groupIndex]
     .posts.push(data);

@@ -19,7 +19,6 @@ function filterUsers(users, searchTerm) {
   });
 }
 
-
 const usersTable = (filter = null) => {
   const { id } = Cookies.getUser();
   const users = LocalStorage.get(localStorageTypes.USERS);
@@ -30,8 +29,8 @@ const usersTable = (filter = null) => {
   }
 
   return (`
-  <div class="users-table__wrapper">
-    <table class="users-table">
+  <div class="table__wrapper">
+    <table class="table">
       <thead class="relative">
         <tr>
           <th>Nome</th>
@@ -51,18 +50,18 @@ const usersTable = (filter = null) => {
             <td>${user.admin ? "admin" : "usuario"}</td>
             <td>${user.active ? "ativo" : "inativo"}</td>
             <td>
-              <div class="users-table__actions">
+              <div class="table__actions">
                 <img 
                   title="${user.admin ? 'Desativar admin' : 'Tornar admin'}"
                   src="/static/assets/icons/${user.admin ? 'admin-revoke' : 'admin-crown'}.svg"
                   onclick="${user.admin ? `revokeAdmin('${user.id}')` : `setAdmin('${user.id}')`}"
-                  class="users-table__action-icon"
+                  class="table__action-icon"
                 />
                 <img
                   title="${user.active ? 'Bloquear acesso' : 'Desbloquear acesso'}"
                   src="/static/assets/icons/${user.active ? 'block-user-access' : 'unblock-user-access'}.svg"
                   onclick="${user.active ? `blockUserAccess('${user.id}')` : `unblockUserAccess('${user.id}')`}"
-                  class="users-table__action-icon"
+                  class="table__action-icon"
                 />
               </div>
             </td>
