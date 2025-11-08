@@ -36,7 +36,6 @@ const post = ({ group = null, posts = null, user }) => {
             <div class="flex post-actions-icons__left">
               <img id="like-btn-${post.id}" src="${post.likes.includes(user.id) ? '/static/assets/icons/like-filled.svg' : '/static/assets/icons/like.svg'}" alt="like-button" class="post-actions-icons__icon" onclick="toggleLike(${group ? `${group.id}` : null}, '${post.id}')" />
               <img src="../static/assets/icons/comments.svg" alt="like-button" class="post-actions-icons__icon" onclick="openPostComments('post-${post.id}')" />
-              <img src="../static/assets/icons/star-sharp-transparent-border-bfbfbf.svg" alt="save-button" class="post-actions-icons__icon"/>
             </div>
             <div class="flex post-actions-icons__right">
               <span class="post-actions__date">${post.date}</span>

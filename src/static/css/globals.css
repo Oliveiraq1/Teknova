@@ -1,5 +1,6 @@
 :root {
   --color-gray: #f3f3f3;
+  --color-bbb: #bebebe;
   --color-white: #FFF;
   --color-fake: #F12B2B;
   
@@ -24,6 +25,16 @@ html, body, #app {
   display: flex;
   flex-direction: column;
   padding: 17px;
+  padding-bottom: 10px;
+}
+
+.navbar{
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ======= Tags basicas */
