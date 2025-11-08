@@ -32,7 +32,7 @@ export function groupAddPost(groupId, post) {
     date: todayDate(),
     fake: false,
     image_url: post.image_url,
-    likes_count: 0,
+    likes: [],
     message: post.message,
     title: post.title
   }

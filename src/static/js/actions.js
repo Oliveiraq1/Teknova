@@ -83,7 +83,7 @@ window.openPostModal = function openPostModal() {
   const modal = document.getElementById("post-modal");
   modal.classList.contains("hidden")
     ? modal.classList.remove("hidden")
-    : modal.classList.add("hidden")
+    : modal.classList.add("hidden");
 }
 
 window.createPost = function createPost(groupId) {
@@ -100,6 +100,7 @@ window.createPost = function createPost(groupId) {
   if (groupIndex == -1) return;
 
   groupAddPost(groupId, { title, message, image_url });
+  window.alert("Post adicionado com sucesso!")
   window.location.reload();
 }
 
