@@ -1,4 +1,4 @@
-const notification = ({ title, message, date, moveTo }) => {
+const notification = ({ id, title, message, date, moveTo }) => {
   return (`
     <div class="notification-container">
       <a href="${moveTo ?? `${window.location.hash}`}" class="notification-link">
