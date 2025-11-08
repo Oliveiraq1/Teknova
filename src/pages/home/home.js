@@ -16,3 +16,4 @@ export const renderHomePosts = () => {
   const groupElement = document.getElementById("home-posts");
   groupElement.innerHTML = html;
 }
+
