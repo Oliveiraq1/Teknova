@@ -69,16 +69,19 @@
   margin-bottom: 2rem;
 }
 .group-header__details {
-  flex: 1;
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  justify-content: center;
-  gap: 4rem;
+  max-width: 580px;
+  margin-bottom: 1rem;
 }
 .group-header__details-title {
   font-size: 1.1rem;
   font-weight: bold;
+}
+.group-header__details-button {
+  padding: .6rem;
 }
 .group-header__details-image {
   width: 2rem;
@@ -117,4 +120,127 @@
 .private-group__title {
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* ======= Home/Feed */
+.font{
+  font-family: "Open", sans-serif;
+}
+
+#teste{
+  border-style: dotted;
+}
+.search{
+  width: 250px;
+  margin-left: 10px;
+}
+
+.icon{
+  position: absolute;
+  height: 15px;
+}
+
+#lupa{
+  left: 29%;
+  top: 30px;
+}
+
+#verify{
+  left: 55px;
+  top: 82.5px;
+}
+
+#star{
+  left: 159px;
+  top: 82.5px;
+}
+
+#follow-home{
+  padding-left: 18px;
+}
+
+#save{
+  padding-left: 16px;
+}
+
+#fire{
+  left: 245px;
+  top: 82.5px;
+}
+
+#in-fire{
+  padding-left: 15px;
+}
+
+#head{
+  display: flex;
+  flex-direction: row;
+}
+
+#button-pages{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30px;
+}
+
+#post{
+  width: 100%;
+  height: 70%;
+  border: 1.5px solid var(--color-gray);
+}
+
+.c{
+  border-style: dotted;
+/* ======= NOTIFICATIONS */
+.notifications-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 2.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+
+  background-color: var(--color-gray);
+  padding: .8rem;
+  border-radius: .5rem;
+}
+.notifications-header img {
+  position: absolute;
+  width: 1.8rem;
+  height: 1.8rem;
+
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3%;
+  cursor: pointer;
+}
+.notifications-main {
+  height: 100%;
+  overflow-y: auto;
+  max-height: 90%;
+}
+.bell-idle {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.zeroNotifications__data {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.zeroNotifications__title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.zeroNotifications__description {
+  color: var(--text-off);
+  font-size: 1rem;
+  text-align: center;
 }

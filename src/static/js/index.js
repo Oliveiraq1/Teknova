@@ -2,16 +2,18 @@ import Page404 from "../../pages/404.js";
 import LocalStorage from "./localstorage/localstorage.js";
 import { middleware } from "./middleware.js";
 import { renderGroup } from "../../pages/groups/group.js";
-// import { renderTest } from "../../pages/test/test.js";
+import { renderNotifications } from "../../pages/notifications/notifications.js";
+import { renderHomePosts } from "../../pages/home/home.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
 
 const routes = {
-  home: { path: "pages/home.html" },
+  home: { path: "pages/home/home.html" },
   register: { path: "pages/register.html" },
   login: { path: "pages/login.html" },
-  group: { path: "pages/groups/group.html" }
+  group: { path: "pages/groups/group.html" },
+  notifications: { path: "pages/notifications/notifications.html" }
 }
 
 LocalStorage.load();
@@ -34,9 +36,11 @@ function renderPage() {
     .then(html => {
       document.getElementById("app").innerHTML = html;
       if (path == "group") { renderGroup(params) };
-      // if (path == "test") { renderTest(params) };
+      if (path == "notifications") { renderNotifications() };
+      if (path == "home") { renderHomePosts() };
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
       document.getElementById("app").innerHTML = Page404();
     })
 }

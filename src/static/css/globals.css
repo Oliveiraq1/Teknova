@@ -1,5 +1,5 @@
 :root {
-  --color-gray: #F5F6F9;
+  --color-gray: #f3f3f3;
   --color-white: #FFF;
   --color-fake: #F12B2B;
   
@@ -19,12 +19,18 @@ html, body, #app {
   height: 100vh;
 }
 
+.header{
+  height: 18%;
+  display: flex;
+  flex-direction: column;
+  padding: 17px;
+}
+
 /* ======= Tags basicas */
 input {
   width: 100%;
   padding: .68rem;
   color: #000;
-
   outline: none;
   border: 2px solid var(--color-gray);
   border-radius: .5rem;

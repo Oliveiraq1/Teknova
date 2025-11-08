@@ -5,8 +5,30 @@
   }
 
   /* ======= Paginas */
+  /* === Login & Register */
+  .lr-main__border {
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 .8rem rgba(0,0,0,.1)
+  }
+
+  /* === GROUP */
   .group-post-container {
     align-items: center;
+  }
+
+  /* === NOTIFICATIONS */
+  .notifications-main {
+    display: flex;
+    justify-content: center;
+  }
+  .zeroNotifications__title {
+    font-size: 1.4rem;
+  }
+  .zeroNotifications__description {
+    color: var(--text-off);
+    font-size: 1.2rem;
+    text-align: center;
   }
 }
 
@@ -23,7 +45,7 @@
     margin-bottom: 3rem;
   }
   .group-header__details {
-    justify-content: space-around;
+    max-width: 900px;
   }
   .group-header__group-img {
     width: 6rem;
@@ -32,10 +54,13 @@
   .group-header__details-title {
     font-size: 1.5rem;
   }
+  .modal {
+    max-width: 900px;
+  }
 
   /* ======= Components */
   .post-container {
-    max-width: 900px !important;
+    max-width: 900px;
   }
 }
 

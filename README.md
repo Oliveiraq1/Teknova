@@ -2,6 +2,9 @@
 
 Projeto seguindo a metodologia **SCRUM** para a materia de **Processo de Software** (II Semestre) na UCSAL - 2025.
 
+Arquitetura do projeto: **SPA** baseado em **`Hashs`** e **`Querys`**
+
+
 ## Sumario
 
 - [**`Descricao do projeto`**](#descricao)
@@ -15,6 +18,7 @@ Projeto seguindo a metodologia **SCRUM** para a materia de **Processo de Softwar
 
 - `📁 docs/`: documentação do projeto
 - `📁 src/`: codigo-fonte da aplicacao
+    - `📁 components/`: componentes reutilizaveis
     - `📁 pages/`: agrupamento de paginas
     - `📁 static/`: arquivos estaticos
         - `📁 assets/`: imagens
@@ -35,5 +39,4 @@ Projeto seguindo a metodologia **SCRUM** para a materia de **Processo de Softwar
 - `HTML`
 - `CSS`
 - `Javascript`
-
-Arquitetura do projeto: **SPA** baseado em HASH
+- `API Dicebear`: Imagens de perfil
