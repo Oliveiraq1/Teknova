@@ -56,7 +56,8 @@ class Cookies {
       image_url: `https://api.dicebear.com/7.x/adventurer/svg?seed=${user.name}`,
       email: user.email,
       cpf: user.cpf,
-      last_name: user.last_name
+      last_name: user.last_name,
+      admin: user.admin
     }
   }
 }
