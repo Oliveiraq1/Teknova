@@ -45,7 +45,7 @@
     margin-bottom: 3rem;
   }
   .group-header__details {
-    justify-content: space-around;
+    max-width: 900px;
   }
   .group-header__group-img {
     width: 6rem;
@@ -54,10 +54,13 @@
   .group-header__details-title {
     font-size: 1.5rem;
   }
+  .modal {
+    max-width: 900px;
+  }
 
   /* ======= Components */
   .post-container {
-    max-width: 900px !important;
+    max-width: 900px;
   }
 }
 

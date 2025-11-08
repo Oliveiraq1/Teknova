@@ -10,7 +10,7 @@ export function checkYears(date, minAge) {
 
 export function todayDate() {
   const [date, _] = new Date().toISOString().split("T");
-  const [year, month, day] = date;
+  const [year, month, day] = date.split("-");
   const today = `${day}/${month}/${year}`
 
   return today;

@@ -12,14 +12,16 @@ const renderPrivateGroup = ({ group }) => {
           <img src="https://ui-avatars.com/api/?name=${group.name}" />
         </div>
       </div>
-      <div class="group-header__details">
-        <p class="group-header__details-title">g/${group.name}</p>
-        <img src="../../static/assets/icons/lock.svg" class="group-header__details-image" />
+      <div class="flex-center">
+        <div class="group-header__details">
+          <p class="group-header__details-title">g/${group.name}</p>
+          <img src="../../static/assets/icons/lock.svg" class="group-header__details-image" />
+        </div>
       </div>
     </header>
     <main class="private-group">
       <p class="private-group__title">Grupo privado</p>
-      <button onclick="joinRequest('${group.id}')">Pedir para entrar</button>
+      <button class="group-header__details-button" onclick="createPost('${group.id}')">Pedir para entrar</button>
     </main>
   `)
 
@@ -27,7 +29,6 @@ const renderPrivateGroup = ({ group }) => {
   groupElement.style.display = "flex";
   groupElement.style.flexDirection = "column";
   groupElement.style.height = "100%";
-
   groupElement.innerHTML = html;
 }
 
@@ -39,9 +40,11 @@ const renderPublicGroup = ({ group, user }) => {
           <img src="https://ui-avatars.com/api/?name=${group.name}" />
         </div>
       </div>
-      <div class="group-header__details">
-        <p class="group-header__details-title">g/${group.name}</p>
-        <button onclick="createPost('${group.id}')">Entrar no grupo</button>
+      <div class="flex-center">
+        <div class="group-header__details">
+          <p class="group-header__details-title">g/${group.name}</p>
+          <button class="group-header__details-button" onclick="joinPublicGroup('${group.id}')">Entrar no grupo</button>
+        </div>
       </div>
     </header>
     <main class="group-post-container">
@@ -62,11 +65,23 @@ const member = ({ group, user }) => {
           <img src="https://ui-avatars.com/api/?name=${group.name}" />
         </div>
       </div>
-      <div class="group-header__details">
-        <p class="group-header__details-title">g/${group.name}</p>
-        <button onclick="createPost('${group.id}')">Novo Post</button>
+      <div class="flex-center">
+        <div class="group-header__details">
+          <p class="group-header__details-title">g/${group.name}</p>
+          <button class="group-header__details-button" onclick="openPostModal()">Novo Post</button>
+        </div>
       </div>
-    </header>
+      </header>
+    <div class="flex-center">
+      <div class="modal hidden" id="post-modal">
+        <div class="modal-container">
+          <input type="text" id="post-modal-title" placeholder="Titulo do post *" />
+          <input type="text" id="post-modal-message" placeholder="Corpo do post *" />
+          <input type="text" id="post-modal-image_url" placeholder="Informe o link da imagem *" />
+          <button type="button" onclick=createPost('${group.id}')>Criar post</button>
+        </div>
+      </div>
+    </div>
     <main class="group-post-container">
       ${post({ group, user })}
     </main>`

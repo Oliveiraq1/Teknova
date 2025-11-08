@@ -69,16 +69,19 @@
   margin-bottom: 2rem;
 }
 .group-header__details {
-  flex: 1;
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  justify-content: center;
-  gap: 4rem;
+  max-width: 580px;
+  margin-bottom: 1rem;
 }
 .group-header__details-title {
   font-size: 1.1rem;
   font-weight: bold;
+}
+.group-header__details-button {
+  padding: .6rem;
 }
 .group-header__details-image {
   width: 2rem;

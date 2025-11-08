@@ -6,7 +6,7 @@ const post = ({ group = null, posts = null, user }) => {
 
   return (`
     <div class="flex flex-col post-container">
-    ${data.map(post => (`
+    ${data.reverse().map(post => (`
       <div class="post-item">
         <div class="flex post-header">
           <div class="flex post-header__user">
@@ -34,7 +34,7 @@ const post = ({ group = null, posts = null, user }) => {
         `) : (`
           <div class="flex post-action-icons">
             <div class="flex post-actions-icons__left">
-              <img src="../static/assets/icons/like-filled.svg" alt="like-button" class="post-actions-icons__icon" onclick="likePost(${group ? `${group.id}` : null}, '${post.id}')" />
+              <img id="like-btn-${post.id}" src="${post.likes.includes(user.id) ? '/static/assets/icons/like-filled.svg' : '/static/assets/icons/like.svg'}" alt="like-button" class="post-actions-icons__icon" onclick="toggleLike(${group ? `${group.id}` : null}, '${post.id}')" />
               <img src="../static/assets/icons/comments.svg" alt="like-button" class="post-actions-icons__icon" onclick="openPostComments('post-${post.id}')" />
             </div>
             <div class="flex post-actions-icons__right">

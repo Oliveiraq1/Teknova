@@ -187,3 +187,18 @@
   color: var(--text-off);
   align-self: flex-start;
 }
+
+/* ======= POST MODAL */
+.modal {
+  background: var(--color-gray);
+  margin-bottom: 1rem;
+  border-radius: .8rem;
+  padding: .3rem .5rem;
+  width: 100%;
+  max-width: 580px;
+}
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
