@@ -41,7 +41,7 @@ window.register = function register(e) {
   if (emailUsed) return window.alert("Email ja cadastrado");
   if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
 
-  const user = addUser({ name, last_name, cpf, email, password });
+  const user = addUser({ name, last_name, cpf, email, password, birthdate, admin: false });
   Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...user }));
   window.location.hash = "#home";
 }
