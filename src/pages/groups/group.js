@@ -68,10 +68,20 @@ const member = ({ group, user }) => {
       <div class="flex-center">
         <div class="group-header__details">
           <p class="group-header__details-title">g/${group.name}</p>
-          <button class="group-header__details-button" onclick="createPost('${group.id}')">Novo Post</button>
+          <button class="group-header__details-button" onclick="openPostModal()">Novo Post</button>
         </div>
       </div>
-    </header>
+      </header>
+    <div class="flex-center">
+      <div class="modal hidden" id="post-modal">
+        <div class="modal-container">
+          <input type="text" id="post-modal-title" placeholder="Titulo do post *" />
+          <input type="text" id="post-modal-message" placeholder="Corpo do post *" />
+          <input type="text" id="post-modal-image_url" placeholder="Informe o link da imagem *" />
+          <button type="button" onclick=createPost('${group.id}')>Criar post</button>
+        </div>
+      </div>
+    </div>
     <main class="group-post-container">
       ${post({ group, user })}
     </main>`

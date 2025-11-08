@@ -15,6 +15,33 @@ export function addUser(user) {
 }
 
 /* ======= Posts */
+export function groupAddPost(groupId, post) {
+  const user = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+
+  const groupIndex = groups.findIndex(g => g.id == groupId);
+  if (groupIndex == -1) return;
+
+  const data = {
+    id: groups[groupIndex].posts.length,
+    author: {
+      id: user.id,
+      name: user.name
+    },
+    comments: [],
+    date: todayDate(),
+    fake: false,
+    image_url: post.image_url,
+    likes_count: 0,
+    message: post.message,
+    title: post.title
+  }
+  groups[groupIndex]
+    .posts.push(data);
+
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+}
+
 export function groupPostAddComment(groupId, postId, comment) {
   const groups = LocalStorage.get(localStorageTypes.GROUPS);
 
@@ -32,7 +59,6 @@ export function groupPostAddComment(groupId, postId, comment) {
 }
 
 export function feedPostAddComment(postId, comment) {
-  console.log("HUMM TO AQ");
   const posts = LocalStorage.get(localStorageTypes.POSTS);
 
   const postIndex = posts.findIndex(p => p.id == postId);

@@ -6,7 +6,7 @@ const post = ({ group = null, posts = null, user }) => {
 
   return (`
     <div class="flex flex-col post-container">
-    ${data.map(post => (`
+    ${data.reverse().map(post => (`
       <div class="post-item">
         <div class="flex post-header">
           <div class="flex post-header__user">

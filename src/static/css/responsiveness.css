@@ -54,6 +54,9 @@
   .group-header__details-title {
     font-size: 1.5rem;
   }
+  .modal {
+    max-width: 900px;
+  }
 
   /* ======= Components */
   .post-container {
