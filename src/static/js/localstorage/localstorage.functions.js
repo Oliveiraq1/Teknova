@@ -82,7 +82,9 @@ export function feedPostAddComment(postId, comment) {
 export function createNotification({ title, message, target, moveTo = null }) {
   if (!title || !message || !target) return;
 
+  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
   const data = {
+    id: notifications.length,
     title,
     message,
     target,
@@ -90,7 +92,6 @@ export function createNotification({ title, message, target, moveTo = null }) {
     date: todayDate()
   }
 
-  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
   notifications.push(data);
   LocalStorage.set(localStorageTypes.NOTIFICATIONS, notifications);
 }

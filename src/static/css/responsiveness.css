@@ -30,6 +30,11 @@
     font-size: 1.2rem;
     text-align: center;
   }
+
+  /* === ADMIN */
+  .admin-dashboard-container__header {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media (min-width: 1024px) { // LAPTOP

@@ -1,10 +1,14 @@
 import Cookies from "./cookies/cookies.js";
-import {
-  groupPostAddComment,
-  feedPostAddComment
-} from "../js/localstorage/localstorage.functions.js"
 import LocalStorage from "./localstorage/localstorage.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
+
+import {
+  groupPostAddComment,
+  feedPostAddComment,
+  createNotification
+} from "../js/localstorage/localstorage.functions.js"
+
+import { renderUsersTable } from "../../pages/admin/admin.js";
 
 /* ======= POST Actions */
 function togglePostLike({ userId, postId }) {
@@ -92,4 +96,87 @@ window.reportPost = function reportPost(groupId, postId) {
 
   const motivo = window.prompt("Digite o motivo");
   if (motivo) window.alert("Sua denuncia foi enviada para avaliacao de nossos administradores!");
+}
+
+/* ======= ADMIN Actions */
+
+/* === TABLES */
+
+/* === USER TABLE */
+window.filterUserTable = function filterUserTable() {
+  const inputElement = document.getElementById("users-table-filter");
+  const filter = inputElement.value;
+
+  if (!filter.trim()) renderUsersTable();
+
+  renderUsersTable(filter);
+  inputElement.value = "";
+}
+
+window.setAdmin = function (userId) {
+  const { name: author_name, last_name: author_last_name } = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const target_user = users[userId];
+
+  const ok = window.confirm(`Voce tem certeza que deseja tornar ${target_user.name} ${target_user.last_name} um administrador?`);
+  if (!ok) return;
+
+  users[userId].admin = true;
+  LocalStorage.set(localStorageTypes.USERS, users);
+  createNotification({
+    title: "Mudanca de cargo",
+    message: `Parabens, voce se tornou um administrador - by ${author_name} ${author_last_name}`,
+    target: [target_user.id],
+    moveTo: "#admin"
+  })
+  window.alert(`Uma notificacao foi enviada a ${target_user.name} ${target_user.last_name}, informando-lhe que agora eh um administrador!`);
+  renderUsersTable();
+}
+
+window.revokeAdmin = function (userId) {
+  const { name: author_name, last_name: author_last_name } = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const target_user = users[userId];
+
+  const ok = window.confirm(`Voce tem certeza que deseja remover o privilegio de administrador de ${target_user.name} ${target_user.last_name}?`);
+  if (!ok) return;
+
+  users[userId].admin = false;
+  LocalStorage.set(localStorageTypes.USERS, users);
+  createNotification({
+    title: "Mudanca de cargo",
+    message: `Seu direito de administrador foi revogado - by ${author_name} ${author_last_name}`,
+    target: [target_user.id],
+    moveTo: "#home"
+  })
+  window.alert(`Uma notificacao foi enviada a ${target_user.name} ${target_user.last_name}, informando-lhe que agora nao eh mais um administrador!`);
+  renderUsersTable();
+}
+
+window.blockUserAccess = function (userId) {
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const user = users[userId];
+
+  const ok = window.confirm(`Voce tem certeza que deseja bloquear o acesso de ${user.name} ${user.last_name}?`);
+  if (!ok) return;
+
+  users[userId].active = false;
+  if (users[userId].admin) users[userId].admin = false;
+
+  LocalStorage.set(localStorageTypes.USERS, users);
+  window.alert(`O acesso de ${user.name} ${user.last_name} foi removido!`);
+  renderUsersTable();
+}
+
+window.unblockUserAccess = function (userId) {
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const user = users[userId];
+
+  const ok = window.confirm(`Voce tem certeza que deseja desbloquear o acesso de ${user.name} ${user.last_name}?`);
+  if (!ok) return;
+
+  users[userId].active = true;
+  LocalStorage.set(localStorageTypes.USERS, users);
+  window.alert(`O acesso de ${user.name} ${user.last_name} foi desbloqueado!`);
+  renderUsersTable();
 }

@@ -202,3 +202,47 @@
   flex-direction: column;
   gap: .3rem;
 }
+
+/* ======= USERS TABLE */
+.users-table__wrapper {
+  width: 100%;
+  overflow: auto;
+  max-height: 300px;
+}
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.users-table th {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-base-blue);
+  color: var(--color-white);
+  z-index: 1;
+}
+.users-table th,
+.users-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+.users-table thead {
+  background-color: #f0f0f0;
+}
+.users-table tr {
+  background-color: #fff;
+}
+.users-table tr:hover {
+  background-color: var(--color-base-blue);
+  color: var(--color-white);
+}
+.users-table__actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: .5rem;
+}
+.users-table__action-icon {
+  width: 1.8rem;
+  cursor: pointer;
+}

@@ -1,13 +1,22 @@
 export default [
-  {
-    id: 0,
-    cpf: "00000000000",
-    name: "admin",
-    last_name: "adm",
-    email: "admin@email.com",
-    password: "admin",
-    image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=admin",
-    admin: true,
-    birthdate: "08/11/2025"
-  },
+  { id: 0, cpf: "00000000000", name: "admin", last_name: "adm", email: "admin@email.com", password: "admin", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=admin", admin: true, birthdate: "08/11/1985", active: true },
+  { id: 1, cpf: "11111111111", name: "user1", last_name: "one", email: "user1@email.com", password: "user1", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user1", admin: false, birthdate: "01/01/1990", active: true },
+  { id: 2, cpf: "22222222222", name: "user2", last_name: "two", email: "user2@email.com", password: "user2", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user2", admin: true, birthdate: "02/02/1991", active: true },
+  { id: 3, cpf: "33333333333", name: "user3", last_name: "three", email: "user3@email.com", password: "user3", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user3", admin: false, birthdate: "03/03/1992", active: true },
+  { id: 4, cpf: "44444444444", name: "user4", last_name: "four", email: "user4@email.com", password: "user4", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user4", admin: false, birthdate: "04/04/1993", active: true },
+  { id: 5, cpf: "55555555555", name: "user5", last_name: "five", email: "user5@email.com", password: "user5", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user5", admin: true, birthdate: "05/05/1994", active: false },
+  { id: 6, cpf: "66666666666", name: "user6", last_name: "six", email: "user6@email.com", password: "user6", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user6", admin: false, birthdate: "06/06/1995", active: true },
+  { id: 7, cpf: "77777777777", name: "user7", last_name: "seven", email: "user7@email.com", password: "user7", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user7", admin: false, birthdate: "07/07/1996", active: true },
+  { id: 8, cpf: "88888888888", name: "user8", last_name: "eight", email: "user8@email.com", password: "user8", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user8", admin: false, birthdate: "08/08/1997", active: true },
+  { id: 9, cpf: "99999999999", name: "user9", last_name: "nine", email: "user9@email.com", password: "user9", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user9", admin: false, birthdate: "09/09/1998", active: true },
+  { id: 10, cpf: "10101010101", name: "user10", last_name: "ten", email: "user10@email.com", password: "user10", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user10", admin: false, birthdate: "10/10/1999", active: true },
+  { id: 11, cpf: "11111111112", name: "user11", last_name: "eleven", email: "user11@email.com", password: "user11", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user11", admin: true, birthdate: "11/11/2000", active: true },
+  { id: 12, cpf: "12121212121", name: "user12", last_name: "twelve", email: "user12@email.com", password: "user12", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user12", admin: false, birthdate: "12/12/2001", active: true },
+  { id: 13, cpf: "13131313131", name: "user13", last_name: "thirteen", email: "user13@email.com", password: "user13", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user13", admin: false, birthdate: "13/01/2002", active: true },
+  { id: 14, cpf: "14141414141", name: "user14", last_name: "fourteen", email: "user14@email.com", password: "user14", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user14", admin: false, birthdate: "14/02/2003", active: false },
+  { id: 15, cpf: "15151515151", name: "user15", last_name: "fifteen", email: "user15@email.com", password: "user15", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user15", admin: false, birthdate: "15/03/2004", active: false },
+  { id: 16, cpf: "16161616161", name: "user16", last_name: "sixteen", email: "user16@email.com", password: "user16", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user16", admin: false, birthdate: "16/04/2005", active: true },
+  { id: 17, cpf: "17171717171", name: "user17", last_name: "seventeen", email: "user17@email.com", password: "user17", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user17", admin: false, birthdate: "17/05/2006", active: true },
+  { id: 18, cpf: "18181818181", name: "user18", last_name: "eighteen", email: "user18@email.com", password: "user18", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user18", admin: false, birthdate: "18/06/2007", active: true },
+  { id: 19, cpf: "19191919191", name: "user19", last_name: "nineteen", email: "user19@email.com", password: "user19", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=user19", admin: true, birthdate: "19/07/1990", active: true }
 ]

@@ -1,3 +1,53 @@
 <div class="container">
-  <h1>Admin Dashboard</h1>
+  <div class="admin-dashboard">
+    <div class="admin-dashboard-container">
+      <div class="admin-dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p>Conectado(a) como: <span id="admin-connected-as"></span></p>
+      </div>
+      <div class="admin-dashboard-container__header">
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">USUARIOS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-users-count"></p>
+          </div>
+        </div>
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">DENUNCIAS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-users-count">3</p>
+          </div>
+        </div>
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">PEDIDOS P/ GRUPOS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-users-count">15</p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="admin-dashboard-container__body">
+        <div class="admin-dashboard-container__table-area">
+          <div class="admin-dashboard-container__table-area-header">
+            <h3>Tabela: Usuarios</h3>
+            <div class="flex">
+              <input type="text" placeholder="Filtrar" id="users-table-filter" />
+              <button type="button" onclick="filterUserTable()">Filtrar</button>
+            </div>
+          </div>
+          <div id="users-table"></div>
+        </div>
+        <hr />
+        <div class="admin-dashboard-container__table-area">
+          <h3>Tabela: Denuncias</h3>
+          <div id="reports-table"></div>
+        </div>
+        <hr />
+        <div class="admin-dashboard-container__table-area">
+          <h3>Tabela: Pedidos</h3>
+          <div id="requests-table"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
