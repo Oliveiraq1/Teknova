@@ -5,6 +5,12 @@ import { localStorageTypes } from "../../static/js/localstorage/localstorage.typ
 import usersTable from "../../components/usersTable.js";
 import groupRequestsTable from "../../components/groupRequestsTable.js";
 
+import {
+  renderHeader,
+  renderSidebar,
+  renderNavbar
+} from "../../components/baseComponents.js";
+
 export const renderUsersTable = (filter = null) => {
   const usersCountElement = document.getElementById("card-users-count");
   const usersCount = LocalStorage.get(localStorageTypes.USERS).length;
@@ -30,11 +36,15 @@ export const renderGroupRequestsTable = () => {
 };
 
 export const renderAdminDashboard = () => {
-  const { name, last_name } = Cookies.getUser();
-  const connectedAsElement = document.getElementById("admin-connected-as");
-  connectedAsElement.innerHTML = `<b>${name} ${last_name}</b>`;
+  // const { name, last_name } = Cookies.getUser();
+  // const connectedAsElement = document.getElementById("admin-connected-as");
+  // connectedAsElement.innerHTML = `<b>${name} ${last_name}</b>`;
 
-  renderUsersTable();
-  renderReportsTable();
-  renderGroupRequestsTable();
+  // renderUsersTable();
+  // renderReportsTable();
+  // renderGroupRequestsTable();
+
+  renderHeader(false);
+  renderSidebar();
+  renderNavbar();
 };
