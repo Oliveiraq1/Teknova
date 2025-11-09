@@ -90,7 +90,8 @@ export function createNotification({ title, message, target, moveTo = null }) {
     message,
     target,
     moveTo,
-    date: todayDate()
+    date: todayDate(),
+    saw: false
   }
 
   notifications.push(data);

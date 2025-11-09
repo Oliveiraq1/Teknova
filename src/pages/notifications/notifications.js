@@ -1,49 +1,45 @@
 import notification from "../../components/notification.js";
 import { getUserNotifications } from "../../static/js/localstorage/localstorage.functions.js";
 
-const zeroNotifications = () => {
+import {
+  renderHeader,
+  renderSidebar,
+  renderNavbar
+} from "../../components/baseComponents.js";
+import Cookies from "../../static/js/cookies/cookies.js";
+
+export const showNotifications = () => {
+  const { id: userId } = Cookies.getUser();
+  const userNotifications = getUserNotifications();
   const notificationElement = document.getElementById("notifications");
-  const html = (`
-    <img src="/static/assets/icons/bell-idle.svg" class="bell-idle" />
-    <div class="zeroNotifications__data">
-      <p class="zeroNotifications__title">Sem notificacoes</p>
-      <p class="zeroNotifications__description">Quando algo ocorrer, avisaremos aqui para que voce fique por dentro das novidades!</p>
-    </div>
-  `)
 
-  notificationElement.innerHTML = html;
-  notificationElement.style.height = "100%";
-  notificationElement.style.display = "flex";
-  notificationElement.style.justifyContent = "center";
-  notificationElement.style.alignItems = "center";
-  notificationElement.style.flexDirection = "column";
+  if (!userNotifications) return notificationElement.innerHTML = "Sem notificações";
 
-  notificationElement.innerHTML = html;
-}
+  const notSaw = userNotifications
+    .filter(n => !Array.isArray(n.saw) || !n.saw.includes(userId))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-const showNotifications = (notifications) => {
-  const notificationElement = document.getElementById("notifications");
-  const html = (`
-    ${notifications.map(notf => (`
-      ${notification({
+  const sawNotifications = userNotifications
+    .filter(n => Array.isArray(n.saw) && n.saw.includes(userId))
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const allOrdenated = [...notSaw, ...sawNotifications];
+
+  const html = allOrdenated.map(notf => notification({
+    id: notf.id,
     title: notf.title,
     message: notf.message,
     moveTo: notf.moveTo,
-    date: notf.date
-  })}
-    `)).join("")}
-    </div>
-  `)
+    date: notf.date,
+    saw: notf.saw
+  })).join("");
 
   notificationElement.innerHTML = html;
-  notificationElement.style.display = "flex";
-  notificationElement.style.flexDirection = "column";
-  notificationElement.style.gap = ".5rem";
 }
 
 export const renderNotifications = () => {
-  const userNotifications = getUserNotifications()
-
-  if (userNotifications) return showNotifications(userNotifications);
-  return zeroNotifications();
+  showNotifications();
+  renderHeader();
+  renderSidebar();
+  renderNavbar();
 }

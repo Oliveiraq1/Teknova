@@ -8,8 +8,8 @@ const sidebar = () => {
   const userGroups = groups.filter(g => g.users_id.includes(id));
 
   return (`
-    <div id="sidebar-overlay" class="sidebar-overlay visible" onclick="closeSideBar()"></div>
-    <div id="sidebar-wrapper" class="sidebar-wrapper open">
+    <div id="sidebar-overlay" class="sidebar-overlay hidden" onclick="closeSideBar()"></div>
+    <div id="sidebar-wrapper" class="sidebar-wrapper">
       <nav class="sidebar">
         <div class="sidebar-header">
           <img src="${image_url}" alt="user-icon" class="sidebar-header__user-profile">
