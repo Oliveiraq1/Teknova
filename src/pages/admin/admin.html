@@ -1,0 +1,115 @@
+<div class="container admin-container">
+  <div id="header"></div>
+  <h2>Admin</h2>
+
+  <div class="admin-main">
+    <div id="admin" class="admin-main__container">
+      <section class="admin-section">
+        <h4 class="admin-section__title">Overview</h4>
+        <div class="dashboard-data">
+          <div class="dashboard-data__item">
+            <h3 class="dashboard-data__item-title">Usuarios ativos:</h3>
+            <p class="dashboard-data__item-data" id="active-users-count"></p>
+          </div>
+          <div class="dashboard-data__item">
+            <h3 class="dashboard-data__item-title">Denuncias ativas:</h3>
+            <p class="dashboard-data__item-data" id="active-denounces-count"></p>
+          </div>
+          <div class="dashboard-data__item">
+            <h3 class="dashboard-data__item-title">Pedidos de grupo:</h3>
+            <p class="dashboard-data__item-data" id="active-requests-count">15</p>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <section class="admin-section">
+        <div class="admin-section-header">
+          <h4>Tabela de Usuarios</h4>
+          <div class="admin-section-filter">
+            <input type="text" placeholder="Filtrar" id="users-table-filter" class="users-table-filter" />
+            <button type="button" onclick="filterUserTable()" class="users-table-filter-button">Filtrar</button>
+          </div>
+        </div>
+        <div class="admin-section-table">
+          <div id="users-table"></div>
+        </div>
+      </section>
+      <hr />
+      <section class="admin-section">
+        <h4 class="admin-section__title">Tabela de Denuncias</h4>
+        <div class="admin-section-table">
+          <div id="denounces-slider" class="denounces-slider"></div>
+          <div class="denounces-control">
+            <img id="prev-denounce" src="/static/assets/icons/left-button.svg" alt="left button"
+              class="denounces-control__icon" />
+            <img id="next-denounce" src="/static/assets/icons/right-button.svg" alt="right button"
+              class="denounces-control__icon" />
+          </div>
+        </div>
+      </section>
+      <hr />
+      <section class="admin-section">
+        <h4 class="admin-section__title">Tabela de Pedidos de Grupo</h4>
+        <div class="admin-section-table">
+          <div id="requests-table"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div id="mobile-navbar" class="mobile-navbar"></div>
+</div>
+<nav id="sidebar"></nav>
+
+<!-- <div class="container">
+  <div class="admin-dashboard">
+    <div class="admin-dashboard-container">
+      <div class="admin-dashboard-header">
+        <h1>Admin Dashboard</h1>
+        <p>Conectado(a) como: <span id="admin-connected-as"></span></p>
+      </div>
+      <div class="admin-dashboard-container__header">
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">USUARIOS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-users-count"></p>
+          </div>
+        </div>
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">DENUNCIAS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-posts-count"></p>
+          </div>
+        </div>
+        <div class="admin-dashboard-container__card flex-center flex-col">
+          <p class="admin-dashboard-container__card-title">PEDIDOS P/ GRUPOS</p>
+          <div class="admin-dashboard-container__card-description">
+            <p id="card-requests-count"></p>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="admin-dashboard-container__body">
+        <div class="admin-dashboard-container__table-area">
+          <div class="admin-dashboard-container__table-area-header">
+            <h3>Tabela: Usuarios</h3>
+            <div class="flex">
+              <input type="text" placeholder="Filtrar" id="users-table-filter" />
+              <button type="button" onclick="filterUserTable()">Filtrar</button>
+            </div>
+          </div>
+          <div id="users-table"></div>
+        </div>
+        <hr />
+        <div class="admin-dashboard-container__table-area">
+          <h3>Tabela: Denúncias</h3>
+        </div>
+
+        <hr />
+        <div class="admin-dashboard-container__table-area">
+          <h3>Tabela: Pedidos</h3>
+          <div id="requests-table"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -3,7 +3,11 @@ import LocalStorage from "./localstorage/localstorage.js";
 import { cookieTypes } from "./cookies/cookie.types.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
 import { checkYears } from "./utils/date.utils.js";
+import { testCPF } from "./utils/date.utils.js";
 import { addUser, groupAddPost } from "./localstorage/localstorage.functions.js";
+import { renderHome } from "../../pages/home/home.js";
+import { renderGroup } from "../../pages/groups/group.js";
+import { renderCommunities } from "../../pages/community/community.js";
 
 /* ======= AUTENTICACAO */
 window.login = function login(e) {
@@ -15,6 +19,7 @@ window.login = function login(e) {
   const users = LocalStorage.get(localStorageTypes.USERS);
   const user = users.find(u => u.cpf == cpf);
   if (!user) return window.alert("Credenciais invalidas!");
+  if (!user.active) return window.alert("Seu acesso esta desativado!");
   if (password != user.password) return window.alert("Credenciais invalidas!");
 
   const { password: _, image_url: __, ...authData } = user;
@@ -33,17 +38,25 @@ window.register = function register(e) {
   const password = document.getElementById("password").value;
 
   const users = LocalStorage.get(localStorageTypes.USERS);
+  const cpfTest = testCPF(cpf);
   const cpfUsed = users.find(user => user.cpf == cpf);
   const emailUsed = users.find(user => user.email == email);
   const greatherThan18 = checkYears(birthdate, 18);
 
+  if (!cpfTest) return window.alert("CPF inválido");
   if (cpfUsed) return window.alert("CPF ja cadastrado");
   if (emailUsed) return window.alert("Email ja cadastrado");
   if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
 
-  const user = addUser({ name, last_name, cpf, email, password });
+  const user = addUser({ name, last_name, cpf, email, password, birthdate, admin: false, active: true });
   Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify({ ...user }));
   window.location.hash = "#home";
+}
+
+window.logout = function logout() {
+  Cookies.delete(cookieTypes.AUTHENTICATION);
+  window.alert("Deslogou com sucesso!");
+  window.location.hash = "#login";
 }
 
 window.changePasswordFileType = function changePasswordFileType(id) {
@@ -61,24 +74,40 @@ window.changePasswordFileType = function changePasswordFileType(id) {
 }
 
 /* ======= Feed & Grupos */
+window.closeSideBar = function closeSideBar() {
+  const sidebarOverlayElement = document.getElementById("sidebar-overlay");
+  const sidebarWrapperElement = document.getElementById("sidebar-wrapper");
 
-window.hide = function hide() {
-  document.getElementById("lupa").style.display = "none"
-  document.getElementById("search").placeholder = ""
+  sidebarOverlayElement.classList.remove("visible");
+  sidebarOverlayElement.classList.add("hidden");
+  sidebarWrapperElement.classList.remove("open");
 }
 
-window.show = function show() {
-  if (document.getElementById("search").value == "") {
-    document.getElementById("lupa").style.display = ""
-  }
-  document.getElementById("search").placeholder = "     Buscar"
-}
+window.openSidebar = function openSidebar() {
+  const sidebarOverlayElement = document.getElementById("sidebar-overlay");
+  const sidebarWrapperElement = document.getElementById("sidebar-wrapper");
 
-window.search = function search() {
-
+  sidebarOverlayElement.classList.add("visible");
+  sidebarOverlayElement.classList.remove("hidden");
+  sidebarWrapperElement.classList.add("open");
 }
 
 /* ======= Posts */
+window.homeSearchKeyDown = (event) => {
+  if (event.key === "Enter") {
+    const searchTerm = document.getElementById("home-search").value.trim().toLowerCase();
+    const hash = window.location.hash.replace("#", "").split("?")[0];
+
+    if (hash === "home") {
+      renderHome(searchTerm);
+    } else if (hash === "group") {
+      const params = new URLSearchParams(window.location.hash.split("?")[1]);
+      renderGroup(params, searchTerm);
+    } else if (hash === "community") {
+      renderCommunities(searchTerm);
+    }
+  }
+}
 window.openPostModal = function openPostModal() {
   const modal = document.getElementById("post-modal");
   modal.classList.contains("hidden")
@@ -104,6 +133,35 @@ window.createPost = function createPost(groupId) {
   window.location.reload();
 }
 
+window.groupRequest = function groupRequest(groupId) {
+  const { id: user_id, name, last_name } = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS);
+
+  const pendingRequest = requests.find(r => r.user.id == user_id && r.group.id == groupId);
+  if (pendingRequest) {
+    window.alert("Ja ha um pedido seu em analise!");
+    return;
+  }
+
+  const { name: group_name } = groups[groupId];
+  const data = {
+    id: requests.length,
+    user: {
+      id: user_id,
+      fullname: `${name} ${last_name}`
+    },
+    group: {
+      id: groupId,
+      name: group_name
+    }
+  }
+
+  requests.push(data);
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, requests);
+  window.alert("Pedido feito com sucesso. Em breve voce sera informado(a) do status de sua solicitacao!");
+}
+
 /* ======= Grupos */
 window.joinPublicGroup = function joinPublicGroup(groupId) {
   const user = Cookies.getUser();
@@ -119,13 +177,23 @@ window.joinPublicGroup = function joinPublicGroup(groupId) {
   window.alert(`Bem-vindo(a) ao grupo ${groups[groupIndex].name}`);
 }
 
-window.joinRequest = function joinRequest(groupId) {
-  window.alert("Funcao a ser implementada");
-  window.location.hash = "#home";
-}
+window.leaveGroup = function leaveGroup(groupId) {
+  const user = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const groupIndex = groups.findIndex(g => g.id == groupId);
 
-/* 
-  title: Cachorros sabem falar, só fingem que não
-  message: Desde os tempos antigos, os cães dominam várias línguas humanas. Eles só não falam porque assinaram um acordo de silêncio com a ONU em 1949. Repare: eles entendem tudo, mas só respondem com latidos. Coincidência? Duvido.
-  image: https://imgs.search.brave.com/UklDwgtzCJsLNLxKJuHTAhqLDQquku8Uicj8alRyn_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9wb3J0cmFpdC1k/b2ctd2l0aC1kb2dz/LW91dGRvb3JzXzEw/NDg5NDQtMTM0MDQ5/NTUuanBnP3NlbXQ9/YWlzX2luY29taW5n/Jnc9NzQwJnE9ODA
-*/
+  const group = groups[groupIndex];
+  const userIndex = group.users_id.indexOf(user.id);
+
+  if (userIndex === -1) {
+    window.alert("Você não está neste grupo.");
+    return;
+  }
+
+  group.users_id.splice(userIndex, 1);
+
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  window.location.reload();
+  window.alert(`Você saiu do grupo ${group.name}`);
+}

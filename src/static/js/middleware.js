@@ -6,7 +6,7 @@ const public_routes = [
   { path: "register", whenAuthenticated: "redirect" },
 ]
 
-export function middleware(route) {
+function checkAuthentication(route) {
   const authenticated = Cookies.get(cookieTypes.AUTHENTICATION);
   const public_route = public_routes.find(r => r.path == route);
 
@@ -24,5 +24,19 @@ export function middleware(route) {
     return false;
   }
 
+  return true;
+}
+
+function checkAdmin() {
+  const { admin } = Cookies.getUser();
+  if (admin) return true;
+
+  window.location.hash = "#home";
+  return false;
+}
+
+export function middleware(route) {
+  if (!checkAuthentication(route)) return false;
+  if (route == "admin" && !checkAdmin(route)) return false;
   return true;
 }

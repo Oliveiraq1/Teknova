@@ -3,6 +3,12 @@ import Cookies from "../../static/js/cookies/cookies.js";
 import post from "../../components/post.js";
 import { localStorageTypes } from "../../static/js/localstorage/localstorage.types.js";
 
+import {
+  renderHeader,
+  renderSidebar,
+  renderNavbar
+} from "../../components/baseComponents.js";
+
 /* ======= Usuario nao eh membro */
 const renderPrivateGroup = ({ group }) => {
   const html = (`
@@ -21,7 +27,7 @@ const renderPrivateGroup = ({ group }) => {
     </header>
     <main class="private-group">
       <p class="private-group__title">Grupo privado</p>
-      <button class="group-header__details-button" onclick="createPost('${group.id}')">Pedir para entrar</button>
+      <button class="group-header__details-button" onclick="groupRequest('${group.id}')">Pedir para entrar</button>
     </main>
   `)
 
@@ -88,7 +94,7 @@ const member = ({ group, user }) => {
   )
 
   const groupElement = document.getElementById("group");
-  groupElement.innerHTML = html;
+  groupElement.innerHTML = group.posts.length == 0 ? "Seja o primeiro a fazer um post!" : html;
 }
 
 const throwError = (message) => {
@@ -96,7 +102,7 @@ const throwError = (message) => {
   throw new Error(message);
 }
 
-export const renderGroup = (params) => {
+export const renderGroup = (params, searchTerm = "") => {
   const group_id = params.get("id");
   if (!group_id) return throwError("Grupo nao encontrado");
 
@@ -107,7 +113,24 @@ export const renderGroup = (params) => {
   const user = Cookies.getUser();
   if (!user) throw new Error("Usuario invalido!");
 
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase();
+    group.posts = group.posts.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.message.toLowerCase().includes(term)
+    );
+  }
+
+  if (!group.users_id.includes(user.id) && group.private) {
+    renderHeader(false);
+  } else {
+    renderHeader();
+  }
+
+  renderSidebar();
+  renderNavbar();
+
   if (group.users_id.includes(user.id)) return member({ group, user });
   if (!group.users_id.includes(user.id) && group.private) return renderPrivateGroup({ group });
-  return renderPublicGroup({ group, user });
+  renderPublicGroup({ group, user });
 }
