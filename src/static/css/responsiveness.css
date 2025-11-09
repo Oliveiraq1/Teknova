@@ -35,6 +35,12 @@
   .admin-dashboard-container__header {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  /* ======= Componentes */
+  /* === Sidebar */
+  .sidebar {
+    min-width: 45%;
+  }
 }
 
 @media (min-width: 1024px) { // LAPTOP
@@ -66,6 +72,11 @@
   /* ======= Components */
   .post-container {
     max-width: 900px;
+  }
+
+  /* === Sidebar */
+  .sidebar {
+    min-width: 30%;
   }
 }
 

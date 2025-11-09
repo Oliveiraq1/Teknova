@@ -5,6 +5,7 @@ import { renderGroup } from "../../pages/groups/group.js";
 import { renderNotifications } from "../../pages/notifications/notifications.js";
 import { renderHomePosts } from "../../pages/home/home.js";
 import { renderAdminDashboard } from "../../pages/admin/admin.js";
+import { renderNavbar } from "../../pages/home/home.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
@@ -39,8 +40,7 @@ function renderPage() {
       document.getElementById("app").innerHTML = html;
       if (path == "group") { renderGroup(params) };
       if (path == "notifications") { renderNotifications() };
-      if (path == "home") { renderHomePosts(), renderNav() };
-      if (path == "home") { renderHomePosts() };
+      if (path == "home") { renderHomePosts(), renderNavbar() };
       if (path == "admin") { renderAdminDashboard() };
     })
     .catch((error) => {
@@ -49,15 +49,15 @@ function renderPage() {
     })
 }
 
-const renderNav = () => {
+// const renderNav = () => {
 
-  const html = (`
-    <img class="icon-nav" src="../../static/assets/icons/notification-13-svgrepo-com-blue-outline-fixed.svg" alt="notification">
-    <img class="icon-nav" id="big-icon" src="../../static/assets/icons/house-02-svgrepo-com-blue-outline-fixed.svg" alt="home">
-    <img class="icon-nav" id="big-icon" src="../../static/assets/icons/message-circle-matched-stroke.svg" alt="community">
-    <img class="icon-nav" id="perfil-icon" src="https://api.dicebear.com/7.x/adventurer/svg?seed=admin" alt="perfil">
-  `)
+//   const html = (`
+//     <img class="icon-nav" src="../../static/assets/icons/notification-13-svgrepo-com-blue-outline-fixed.svg" alt="notification">
+//     <img class="icon-nav" id="big-icon" src="../../static/assets/icons/house-02-svgrepo-com-blue-outline-fixed.svg" alt="home">
+//     <img class="icon-nav" id="big-icon" src="../../static/assets/icons/message-circle-matched-stroke.svg" alt="community">
+//     <img class="icon-nav" id="perfil-icon" src="https://api.dicebear.com/7.x/adventurer/svg?seed=admin" alt="perfil">
+//   `)
 
-  const groupElement = document.getElementById("navbar");
-  groupElement.innerHTML = html;
-}
+//   const groupElement = document.getElementById("navbar");
+//   groupElement.innerHTML = html;
+// }

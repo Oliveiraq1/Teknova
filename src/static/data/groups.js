@@ -4,7 +4,7 @@ export default [
     name: "Salvador",
     private: false,
     banner_url: "",
-    image_url: "",
+    image_url: "https://ui-avatars.com/api/?name=Salvador",
     posts: [
       {
         id: 0, author: { id: 0, fullname: "admin adm" },
@@ -47,7 +47,7 @@ export default [
     name: "Alagoinhas",
     private: true,
     banner_url: "",
-    image_url: "",
+    image_url: "https://ui-avatars.com/api/?name=Alagoinhas",
     posts: [
       {
         id: 0,
@@ -111,7 +111,7 @@ export default [
     name: "Catu",
     private: false,
     banner_url: "",
-    image_url: "",
+    image_url: "https://ui-avatars.com/api/?name=Catu",
     posts: [
       {
         id: 0,

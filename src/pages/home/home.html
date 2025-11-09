@@ -1,4 +1,36 @@
-<div class="header">
+<div class="container home-container">
+  <header class="home-header">
+    <img src="/static/assets/pap-logo.png" alt="pap-logo" class="home-header__logo" />
+    <div class="home-header__container">
+      <div class="home-header__search">
+        <input type="text" id="home-search" placeholder="Buscar" onkeydown="homeSearchKeyDown(event)" />
+        <img src="/static/assets/icons/magnifier-svgrepo-com-bold-fix.svg" alt="lupe" class="home-header__icon" />
+      </div>
+    </div>
+    <div class="home-header__user">
+      <img src="#" id="header-user-icon" />
+    </div>
+  </header>
+  <div class="home-posts-container">
+    <div id="home-posts"></div>
+  </div>
+  <div id="mobile-navbar"></div>
+</div>
+
+<nav id="sidebar"></nav>
+
+<!-- <div class="">
+  <header class="home-header">
+    <div class="home-header__container">
+      <div class="home-header__search">
+        <input type="text" id="home-search" placeholder="Buscar" />
+        <img src="/static/assets/icons/magnifier-svgrepo-com-bold-fix.svg" alt="lupe" class="home-header__icon" />
+      </div>
+    </div>
+  </header>
+</div> -->
+
+<!-- <div class="header">
   <div id="head">
     <img src="/static/assets/pap-logo.png" alt="pap-logo">
     <img class="icon" id="lupa" src="../static/assets/icons/magnifier-svgrepo-com-bold-fix.svg">
@@ -19,9 +51,6 @@
       ⠀Em alta
     </button>
   </div>
-</div>
+</div> -->
 
-<div class="container" id="home-posts"></div>
-<div id="navbar"></div>
-
-
+<!-- <div id="navbar"></div> -->

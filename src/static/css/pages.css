@@ -122,7 +122,65 @@
   font-weight: bold;
 }
 
-/* ======= Home/Feed */
+/* ======= Home */
+.container.home-container {
+  padding-top: 7rem;
+}
+.home-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+
+  box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+  min-height: 5rem;
+  background-color: var(--color-white);
+}
+.home-header__container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-header__search {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+}
+.home-header__search input {
+  max-width: 580px;
+  padding-left: 2.2rem;
+}
+.home-header__search img {
+  width: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.home-posts-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 6rem;
+}
+.home-header__user {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  padding: .3rem;
+  background: var(--color-gray);
+
+  display: none;
+}
+
 .font{
   font-family: "Open", sans-serif;
 }
