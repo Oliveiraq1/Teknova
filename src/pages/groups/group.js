@@ -113,12 +113,16 @@ export const renderGroup = (params) => {
   const user = Cookies.getUser();
   if (!user) throw new Error("Usuario invalido!");
 
-  renderHeader();
+  if (!group.users_id.includes(user.id) && group.private) {
+    renderHeader(false);
+  } else {
+    renderHeader();
+  }
+
   renderSidebar();
   renderNavbar();
 
   if (group.users_id.includes(user.id)) return member({ group, user });
   if (!group.users_id.includes(user.id) && group.private) return renderPrivateGroup({ group });
-  return renderPublicGroup({ group, user });
-
+  renderPublicGroup({ group, user });
 }
