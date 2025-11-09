@@ -55,7 +55,10 @@ const post = ({ group = null, posts = null, user }) => {
                 src="/static/assets/icons/${post.denounces.includes(user.id) ? 'warning-filled.svg' : 'warning.svg'}"
                 alt="like-button"
                 class="post-actions-icons__icon"
-                onclick="${post.denounces.includes(user.id) ? `removeReportPost(${group ? group.id : null}, ${post.id})` : `reportPost(${group ? group.id : null}, ${post.id})`}"
+                onclick="${post.denounces.includes(user.id)
+        ? `removeReportPost(${group ? group.id : 'null'}, ${post.id})`
+        : `reportPost(${group ? group.id : 'null'}, ${post.id})`}"
+
               />
             </div>
           </div>
