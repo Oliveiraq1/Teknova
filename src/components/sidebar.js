@@ -25,12 +25,15 @@ const sidebar = () => {
           <details class="sidebar-community">
             <summary>Comunidades</summary>
             <div class="sidebar-communities">
-              ${userGroups.length == 0 ? (`<div class="sidebar-communities no-community"><a href="#community">Buscar comunidades</a></div>`) : userGroups.map(g => (`
+              ${userGroups.length == 0 ? ('') : userGroups.map(g => (`
                 <a href="#group?id=${g.id}" class="sidebar-community__group">
                   <img src="${g.image_url}" alt="group-img" class="sidebar-community__group-img" />
                   <p>${g.name}</p>
                 </a>
               `))}
+              <div class="sidebar-communities no-community">
+                <a href="#community">Buscar comunidades
+              </a></div>
             </div>
           </details>
         </div>

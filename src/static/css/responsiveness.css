@@ -4,6 +4,11 @@
   .group-post-container {
     align-items: center;
   }
+
+  /* === COMMUNITIES */
+  .communities-main__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (min-width: 768px) {  // TABLET
   /* ======= Classes Utilitarias */
@@ -22,6 +27,11 @@
   /* === GROUP */
   .group-post-container {
     align-items: center;
+  }
+
+  /* === COMMUNITIES */
+  .communities-main__container {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   /* === NOTIFICATIONS */
@@ -45,6 +55,9 @@
 
   /* ======= Componentes */
   /* === Sidebar */
+  .sidebar-wrapper {
+    width: 50%;
+  }
   .sidebar-wrapper.open {
     max-width: 50%;
   }
@@ -91,6 +104,9 @@
   }
 
   /* === Sidebar */
+  .sidebar-wrapper {
+    width: 45%;
+  }
   .sidebar-wrapper.open {
     max-width: 45%;
   }
