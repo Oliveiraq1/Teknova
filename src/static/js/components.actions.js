@@ -16,6 +16,7 @@ import {
   renderUsersTable,
   renderGroupRequestsTable
 } from "../../pages/admin/admin.js";
+import { cookieTypes } from "./cookies/cookie.types.js";
 
 /* ======= POST Actions */
 function togglePostLike({ userId, postId }) {
@@ -436,3 +437,106 @@ window.denyGroupRequest = (id) => {
   window.alert("Uma notificacao foi enviada ao usuario, informando que a permissao foi negada!");
   renderGroupRequestsTable();
 };
+
+/* ======= PROFILE */
+window.changeName = function changeName() {
+  const user = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const newName = window.prompt("Digite o novo nome:");
+
+  if (!newName) return;
+
+  const confirm = window.confirm(`Tem certeza que deseja alterar seu nome para "${newName}"?`);
+  if (!confirm) return;
+
+  users[user.id].name = newName;
+
+  const authData = {
+    id: user.id,
+    name: newName,
+    last_name: user.last_name,
+    cpf: user.cpf,
+    email: user.email,
+    admin: user.admin,
+    birthdate: user.birthdate,
+    active: user.active
+  }
+
+  Cookies.delete(cookieTypes.AUTHENTICATION);
+  Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify(authData));
+  LocalStorage.set(localStorageTypes.USERS, users);
+
+  window.alert("Nome alterado com sucesso!");
+  window.location.reload();
+}
+
+window.changeLastName = function changeLastName() {
+  const user = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const newName = window.prompt("Digite o novo nome:");
+
+  if (!newName) return;
+
+  const confirm = window.confirm(`Tem certeza que deseja alterar seu ultimo nome para "${newName}"?`);
+  if (!confirm) return;
+
+  users[user.id].last_name = newName;
+
+  const authData = {
+    id: user.id,
+    name: user.name,
+    last_name: newName,
+    cpf: user.cpf,
+    email: user.email,
+    admin: user.admin,
+    birthdate: user.birthdate,
+    active: user.active
+  }
+
+  Cookies.delete(cookieTypes.AUTHENTICATION);
+  Cookies.set(cookieTypes.AUTHENTICATION, JSON.stringify(authData));
+  LocalStorage.set(localStorageTypes.USERS, users);
+
+  window.alert("Ultimo nome alterado com sucesso!");
+  window.location.reload();
+}
+
+window.changeImageUrl = function changeImageUrl() {
+  const user = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+  const newUrl = window.prompt("Digite a nova URL da imagem de perfil:");
+
+  if (!newUrl) return;
+
+  const confirm = window.confirm(`Tem certeza que deseja alterar sua imagem de perfil para "${newUrl}"?`);
+  if (!confirm) return;
+
+  users[user.id].image_url = newUrl;
+  LocalStorage.set(localStorageTypes.USERS, users);
+
+  window.alert("Imagem de perfil alterada com sucesso!");
+  window.location.reload();
+}
+
+window.changePassword = function changePassword() {
+  const user = Cookies.getUser();
+  const users = LocalStorage.get(localStorageTypes.USERS);
+
+  const currentPass = window.prompt("Digite sua senha atual:");
+  if (!currentPass || currentPass !== users[user.id].password) {
+    window.alert("Senha atual incorreta.");
+    return;
+  }
+
+  const newPassword = window.prompt("Digite a nova senha:");
+  if (!newPassword) return;
+
+  const confirm = window.confirm("Tem certeza que deseja alterar sua senha?");
+  if (!confirm) return;
+
+  users[user.id].password = newPassword;
+  LocalStorage.set(localStorageTypes.USERS, users);
+
+  window.alert("Senha alterada com sucesso!");
+  window.location.reload();
+}
