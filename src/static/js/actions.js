@@ -61,6 +61,13 @@ window.changePasswordFileType = function changePasswordFileType(id) {
 }
 
 /* ======= Feed & Grupos */
+window.homeSearchKeyDown = function (e) {
+  if (e.key !== "Enter") return;
+  const homeSearchElement = document.getElementById("home-search");
+
+  console.log(homeSearchElement.value);
+  homeSearchElement.value = "";
+}
 
 window.hide = function hide() {
   document.getElementById("lupa").style.display = "none"

@@ -285,3 +285,127 @@
   background-color: #f9f9f9;
   border-radius: 4px;
 }
+
+/* ======= NAVBAR */
+.mobile-navbar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+
+  box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+  min-height: 5rem;
+  background-color: var(--color-white);
+}
+.nav-icon {
+  width: 2.2rem;
+  cursor-pointer;
+}
+.user-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: .2rem;
+  background: var(--color-base-blue);
+  border-radius: 100%;
+}
+
+/* ======= SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  min-width: 70%;
+  background: var(--color-white);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.3rem;
+}
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  font-size: .98rem;
+  font-weight: bold;
+}
+.sidebar-header__user-profile {
+  width: 4rem;
+  padding: .009rem;
+  background: var(--color-base-blue);
+  border-radius: 100%;
+}
+.sidebar-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  text-decoration: none;
+  color: #000;
+}
+.sidebar-icon {
+  width: 1.8rem;
+}
+.sidebar-community summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 2.3rem;
+  margin-bottom: .8rem;
+  border: none;
+}
+.sidebar-community summary::before {
+  content: "";
+  background-image: url('/static/assets/icons/sidebar-community.svg');
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 1.8rem;
+  height: 1.8rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sidebar-communities {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  max-height: 250px;
+  overflow-y: auto;
+  font-size: .95rem;
+}
+.sidebar-community__group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--color-gray);
+  text-decoration: none;
+  gap: .8rem;
+  padding: .3rem .5rem;
+  border-radius: .4rem;
+  color: #000;
+}
+.sidebar-community__group:hover {
+  opacity: .8;
+}
+
+.sidebar-community__group-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+}
