@@ -3,6 +3,7 @@ import LocalStorage from "./localstorage/localstorage.js";
 import { cookieTypes } from "./cookies/cookie.types.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
 import { checkYears } from "./utils/date.utils.js";
+import { testCPF } from "./utils/date.utils.js";
 import { addUser, groupAddPost } from "./localstorage/localstorage.functions.js";
 
 /* ======= AUTENTICACAO */
@@ -33,10 +34,12 @@ window.register = function register(e) {
   const password = document.getElementById("password").value;
 
   const users = LocalStorage.get(localStorageTypes.USERS);
+  const cpfTest = testCPF(cpf);
   const cpfUsed = users.find(user => user.cpf == cpf);
   const emailUsed = users.find(user => user.email == email);
   const greatherThan18 = checkYears(birthdate, 18);
 
+  if (!cpfTest) return window.alert("CPF inválido");
   if (cpfUsed) return window.alert("CPF ja cadastrado");
   if (emailUsed) return window.alert("Email ja cadastrado");
   if (!greatherThan18) return window.alert("Voce precisar ter 18 anos ou mais!");
