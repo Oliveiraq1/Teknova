@@ -10,16 +10,25 @@ import {
   renderNavbar
 } from "../../components/baseComponents.js";
 
-export const renderHome = () => {
+export const renderHome = (searchTerm = "") => {
   const user = Cookies.getUser();
-  const posts = LocalStorage.get(localStorageTypes.POSTS);
+  let posts = LocalStorage.get(localStorageTypes.POSTS);
+
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase();
+    posts = posts.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.message.toLowerCase().includes(term)
+    );
+  }
 
   const html = (`
     ${post({ posts, user })}
-  `)
+  `);
 
   const groupElement = document.getElementById("home-posts");
   groupElement.innerHTML = html;
+
   renderHeader();
   renderSidebar();
   renderNavbar();

@@ -33,6 +33,7 @@ const usersTable = (filter = null) => {
     <table class="table">
       <thead class="relative">
         <tr>
+          <th>Id</th>
           <th>Nome</th>
           <th>Email</th>
           <th>CPF</th>
@@ -44,6 +45,7 @@ const usersTable = (filter = null) => {
       <tbody>
         ${usersToShow.map(user => (`
           <tr>
+            <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.cpf}</td>
