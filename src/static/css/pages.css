@@ -126,6 +126,11 @@
 .container.home-container {
   padding-top: 7rem;
 }
+.header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .home-header {
   width: 100%;
   display: flex;
@@ -141,6 +146,10 @@
   box-shadow: 1px 1px 5px rgba(0,0,0,.3);
   min-height: 5rem;
   background-color: var(--color-white);
+}
+.home-header-sidebar__icon {
+  width: 2rem;
+  display: none;
 }
 .home-header__container {
   flex: 1;

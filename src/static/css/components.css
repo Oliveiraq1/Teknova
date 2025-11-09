@@ -317,19 +317,57 @@
 }
 
 /* ======= SIDEBAR */
-.sidebar {
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* leve escurecimento */
+  z-index: 9;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.sidebar-overlay.visible {
+  opacity: 1;
+}
+.sidebar-overlay.hidden {
+  display: none;
+}
+.sidebar-wrapper {
   position: fixed;
   top: 0;
   bottom: 0;
-  min-width: 70%;
-  background: var(--color-white);
+  left: 0;
+  
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
+
   box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
-  padding: 1.2rem;
-  font-size: 1.2rem;
+
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 10;
+}
+.sidebar-wrapper.open {
+  transform: translateX(0);
+  width: 70%;
+}
+.sidebar {
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  background: var(--color-white);
+  padding: 1.2rem;
+  font-size: 1.2rem;
   gap: 1.3rem;
+
+  z-index: 5;
 }
 .sidebar-header {
   display: flex;
@@ -337,12 +375,20 @@
   gap: .8rem;
   font-size: .98rem;
   font-weight: bold;
+
+  position: relative;
 }
 .sidebar-header__user-profile {
   width: 4rem;
   padding: .009rem;
   background: var(--color-base-blue);
   border-radius: 100%;
+}
+.sidebar-header__close {
+  position: absolute;
+  width: 2rem;
+  right: 0;
+  top: 0;
 }
 .sidebar-main {
   flex: 1;
@@ -380,6 +426,10 @@
   top: 50%;
   transform: translateY(-50%);
 }
+.sidebar-community a {
+  text-decoration: none;
+  color: #000;
+}
 .sidebar-communities {
   padding-left: 1.2rem;
   display: flex;
@@ -388,6 +438,15 @@
   max-height: 250px;
   overflow-y: auto;
   font-size: .95rem;
+  cursor: pointer;
+}
+.sidebar-communities:hover {
+  opacity: .8;
+}
+.sidebar-communities.no-community {
+  padding: .8rem;
+  background: var(--color-gray);
+  border-radius: .8rem;
 }
 .sidebar-community__group {
   display: flex;
@@ -403,7 +462,6 @@
 .sidebar-community__group:hover {
   opacity: .8;
 }
-
 .sidebar-community__group-img {
   width: 2.5rem;
   height: 2.5rem;
