@@ -15,9 +15,7 @@ export const renderHome = () => {
   const posts = LocalStorage.get(localStorageTypes.POSTS);
 
   const html = (`
-    <main class="group-post-container">
-      ${post({ posts, user })}
-    </main>  
+    ${post({ posts, user })}
   `)
 
   const groupElement = document.getElementById("home-posts");
