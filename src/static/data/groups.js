@@ -20,7 +20,7 @@ export default [
         likes: [0],
         image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
         fake: false,
-        date: "06-11-2025",
+        date: "06/11/2025",
         denounces: []
       },
       {
@@ -37,7 +37,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
         fake: false,
-        date: "06-11-2025",
+        date: "06/11/2025",
         denounces: []
       }
     ], users_id: [0]
@@ -65,7 +65,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/tBJnlnIjqGfqLH_A910BaIJ6S1RJy33AgJn6BRxMDqQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5jbm4uY29tL2Fw/aS92MS9pbWFnZXMv/c3RlbGxhci9wcm9k/LzIxMDMwMTE2NDIx/OS0wMy01Zy1jb25j/ZWFsbWVudC1zdHJ1/Y3R1cmVzLmpwZz9x/PXdfMTExMCxjX2Zp/bGw",
         fake: false,
-        date: "06-10-2025",
+        date: "06/10/2025",
         denounces: []
       },
       {
@@ -82,7 +82,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
         fake: false,
-        date: "06-11-2025",
+        date: "06/11/2025",
         denounces: []
       },
       {
@@ -101,7 +101,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/PmiFywu7utl6Y7PL5n-nrfFUzco9JKolGaDWxMgJY-M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cXVpdG9pbmZvcm1h/LmdvYi5lYy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMy8wNS9Q/b3ItcXVlLWxvcy1h/Z2VudGVzLWNpdmls/ZXMtZGUtdHJhbnNp/dG8tc2UtdWJpY2Fu/LWRlYmFqby1kZS1s/b3Mtc2VtYWZvcm9z/LWUxNjg1MDQxNTU5/NDkwLTgwMHg0NDUu/anBlZw",
         fake: false,
-        date: "06-09-2025",
+        date: "06/09/2025",
         denounces: []
       }
     ], users_id: [2, 3]
@@ -129,7 +129,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/tBJnlnIjqGfqLH_A910BaIJ6S1RJy33AgJn6BRxMDqQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5jbm4uY29tL2Fw/aS92MS9pbWFnZXMv/c3RlbGxhci9wcm9k/LzIxMDMwMTE2NDIx/OS0wMy01Zy1jb25j/ZWFsbWVudC1zdHJ1/Y3R1cmVzLmpwZz9x/PXdfMTExMCxjX2Zp/bGw",
         fake: false,
-        date: "06-10-2025",
+        date: "06/10/2025",
         denounces: []
       },
       {
@@ -146,7 +146,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
         fake: false,
-        date: "06-11-2025",
+        date: "06/11/2025",
         denounces: []
       },
       {
@@ -165,7 +165,7 @@ export default [
         likes: [],
         image_url: "https://imgs.search.brave.com/PmiFywu7utl6Y7PL5n-nrfFUzco9JKolGaDWxMgJY-M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cXVpdG9pbmZvcm1h/LmdvYi5lYy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMy8wNS9Q/b3ItcXVlLWxvcy1h/Z2VudGVzLWNpdmls/ZXMtZGUtdHJhbnNp/dG8tc2UtdWJpY2Fu/LWRlYmFqby1kZS1s/b3Mtc2VtYWZvcm9z/LWUxNjg1MDQxNTU5/NDkwLTgwMHg0NDUu/anBlZw",
         fake: false,
-        date: "06-09-2025",
+        date: "06/09/2025",
         denounces: []
       }
     ], users_id: [2, 3]
