@@ -3,9 +3,8 @@ import LocalStorage from "./localstorage/localstorage.js";
 import { middleware } from "./middleware.js";
 import { renderGroup } from "../../pages/groups/group.js";
 import { renderNotifications } from "../../pages/notifications/notifications.js";
-import { renderHomePosts } from "../../pages/home/home.js";
+import { renderHome } from "../../pages/home/home.js";
 import { renderAdminDashboard } from "../../pages/admin/admin.js";
-import { renderNavbar } from "../../pages/home/home.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
@@ -40,7 +39,7 @@ function renderPage() {
       document.getElementById("app").innerHTML = html;
       if (path == "group") { renderGroup(params) };
       if (path == "notifications") { renderNotifications() };
-      if (path == "home") { renderHomePosts(), renderNavbar() };
+      if (path == "home") { renderHome() };
       if (path == "admin") { renderAdminDashboard() };
     })
     .catch((error) => {

@@ -9,6 +9,10 @@ import {
 } from "../js/localstorage/localstorage.functions.js"
 
 import {
+  showNotifications
+} from "../../pages/notifications/notifications.js";
+
+import {
   renderUsersTable,
   renderGroupRequestsTable
 } from "../../pages/admin/admin.js";
@@ -244,6 +248,62 @@ window.removeReportPost = function removeReportPost(groupId = null, postId) {
   return removeReportGroupPost(groupId, postId);
 }
 
+/* ======= Notifications */
+window.markNotificationAsSaw = function markNotificationAsSaw(id, moveTo) {
+  const { id: userId } = Cookies.getUser();
+  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
+  const updated = notifications.map(n => {
+    if (n.id == id) return { ...n, saw: [...new Set([...n.saw, userId])] };
+    return n;
+  });
+
+  console.log({ updated });
+
+  LocalStorage.set(localStorageTypes.NOTIFICATIONS, updated);
+  window.location.href = moveTo;
+}
+
+window.deleteNotification = function deleteNotification(id) {
+  const confirmDelete = window.confirm("Tem certeza que deseja excluir esta notificação?");
+  if (!confirmDelete) return;
+
+  const { id: userId } = Cookies.getUser();
+
+  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
+  const updated = notifications.map(n => {
+    if (n.id == id) {
+      const newTarget = n.target.filter(t => t !== userId);
+      const newSaw = n.saw.filter(s => s !== userId);
+      return { ...n, target: newTarget, saw: newSaw };
+    }
+    return n;
+  }).filter(n => n.target.length > 0);
+
+  LocalStorage.set(localStorageTypes.NOTIFICATIONS, updated);
+  showNotifications();
+}
+
+window.deleteSawNotifications = () => {
+  const confirmDelete = window.confirm("Tem certeza que deseja excluir todas as notificações vistas?");
+  if (!confirmDelete) return;
+
+  const { id: userId } = Cookies.getUser();
+
+  const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
+  const updated = notifications.map(n => {
+    const saw = n.saw;
+    if (saw.includes(userId)) {
+      const newTarget = n.target.filter(t => t != userId);
+      const newSaw = saw.filter(s => s !== userId);
+      return { ...n, target: newTarget, saw: newSaw };
+    }
+    return n;
+  }).filter(n => n.target.length > 0);
+
+  LocalStorage.set(localStorageTypes.NOTIFICATIONS, updated);
+  showNotifications();
+}
+
 /* ======= ADMIN Actions */
 
 /* === TABLES */
@@ -369,7 +429,7 @@ window.denyGroupRequest = (id) => {
     title: "Entrada de grupo",
     message: `Seu pedido para entrar no grupo ${groupName}, foi negado!`,
     moveTo: null,
-    target: [userId]
+    target: [userId],
   })
 
   LocalStorage.set(localStorageTypes.GROUP_REQUESTS, updatedRequests);
