@@ -1,3 +1,10 @@
+@media (min-width: 610px) {
+  /* ======= Paginas */
+  /* === GROUP */
+  .group-post-container {
+    align-items: center;
+  }
+}
 @media (min-width: 768px) {  // TABLET
   /* ======= Classes Utilitarias */
   .container {
@@ -38,8 +45,8 @@
 
   /* ======= Componentes */
   /* === Sidebar */
-  .sidebar {
-    min-width: 45%;
+  .sidebar-wrapper.open {
+    max-width: 50%;
   }
 }
 
@@ -73,10 +80,19 @@
   .post-container {
     max-width: 900px;
   }
+  .mobile-navbar {
+    display: none;
+  }
+  .home-header-sidebar__icon {
+    display: block;
+  }
+  .home-header__user {
+    display: block;
+  }
 
   /* === Sidebar */
-  .sidebar {
-    min-width: 30%;
+  .sidebar-wrapper.open {
+    max-width: 45%;
   }
 }
 
