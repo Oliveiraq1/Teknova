@@ -3,6 +3,12 @@ import Cookies from "../../static/js/cookies/cookies.js";
 import post from "../../components/post.js";
 import { localStorageTypes } from "../../static/js/localstorage/localstorage.types.js";
 
+import {
+  renderHeader,
+  renderSidebar,
+  renderNavbar
+} from "../../components/baseComponents.js";
+
 /* ======= Usuario nao eh membro */
 const renderPrivateGroup = ({ group }) => {
   const html = (`
@@ -82,7 +88,7 @@ const member = ({ group, user }) => {
         </div>
       </div>
     </div>
-    <main class="group-post-container">
+    <main class="home-post-container">
       ${post({ group, user })}
     </main>`
   )
@@ -107,7 +113,12 @@ export const renderGroup = (params) => {
   const user = Cookies.getUser();
   if (!user) throw new Error("Usuario invalido!");
 
+  renderHeader();
+  renderSidebar();
+  renderNavbar();
+
   if (group.users_id.includes(user.id)) return member({ group, user });
   if (!group.users_id.includes(user.id) && group.private) return renderPrivateGroup({ group });
   return renderPublicGroup({ group, user });
+
 }
