@@ -91,7 +91,7 @@ export function createNotification({ title, message, target, moveTo = null }) {
     target,
     moveTo,
     date: todayDate(),
-    saw: false
+    saw: []
   }
 
   notifications.push(data);
