@@ -88,7 +88,7 @@ const member = ({ group, user }) => {
         </div>
       </div>
     </div>
-    <main class="home-post-container">
+    <main class="group-post-container">
       ${post({ group, user })}
     </main>`
   )
