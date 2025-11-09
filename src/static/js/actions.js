@@ -5,6 +5,9 @@ import { localStorageTypes } from "./localstorage/localstorage.types.js";
 import { checkYears } from "./utils/date.utils.js";
 import { testCPF } from "./utils/date.utils.js";
 import { addUser, groupAddPost } from "./localstorage/localstorage.functions.js";
+import { renderHome } from "../../pages/home/home.js";
+import { renderGroup } from "../../pages/groups/group.js";
+import { renderCommunities } from "../../pages/community/community.js";
 
 /* ======= AUTENTICACAO */
 window.login = function login(e) {
@@ -16,6 +19,7 @@ window.login = function login(e) {
   const users = LocalStorage.get(localStorageTypes.USERS);
   const user = users.find(u => u.cpf == cpf);
   if (!user) return window.alert("Credenciais invalidas!");
+  if (!user.active) return window.alert("Seu acesso esta desativado!");
   if (password != user.password) return window.alert("Credenciais invalidas!");
 
   const { password: _, image_url: __, ...authData } = user;
@@ -70,14 +74,6 @@ window.changePasswordFileType = function changePasswordFileType(id) {
 }
 
 /* ======= Feed & Grupos */
-window.homeSearchKeyDown = function homeSearchKeyDown(e) {
-  if (e.key !== "Enter") return;
-  const homeSearchElement = document.getElementById("home-search");
-
-  console.log(homeSearchElement.value);
-  homeSearchElement.value = "";
-}
-
 window.closeSideBar = function closeSideBar() {
   const sidebarOverlayElement = document.getElementById("sidebar-overlay");
   const sidebarWrapperElement = document.getElementById("sidebar-wrapper");
@@ -96,23 +92,22 @@ window.openSidebar = function openSidebar() {
   sidebarWrapperElement.classList.add("open");
 }
 
-window.hide = function hide() {
-  document.getElementById("lupa").style.display = "none"
-  document.getElementById("search").placeholder = ""
-}
-
-window.show = function show() {
-  if (document.getElementById("search").value == "") {
-    document.getElementById("lupa").style.display = ""
-  }
-  document.getElementById("search").placeholder = "     Buscar"
-}
-
-window.search = function search() {
-
-}
-
 /* ======= Posts */
+window.homeSearchKeyDown = (event) => {
+  if (event.key === "Enter") {
+    const searchTerm = document.getElementById("home-search").value.trim().toLowerCase();
+    const hash = window.location.hash.replace("#", "").split("?")[0];
+
+    if (hash === "home") {
+      renderHome(searchTerm);
+    } else if (hash === "group") {
+      const params = new URLSearchParams(window.location.hash.split("?")[1]);
+      renderGroup(params, searchTerm);
+    } else if (hash === "community") {
+      renderCommunities(searchTerm);
+    }
+  }
+}
 window.openPostModal = function openPostModal() {
   const modal = document.getElementById("post-modal");
   modal.classList.contains("hidden")

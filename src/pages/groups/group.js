@@ -94,7 +94,7 @@ const member = ({ group, user }) => {
   )
 
   const groupElement = document.getElementById("group");
-  groupElement.innerHTML = html;
+  groupElement.innerHTML = group.posts.length == 0 ? "Seja o primeiro a fazer um post!" : html;
 }
 
 const throwError = (message) => {
@@ -102,7 +102,7 @@ const throwError = (message) => {
   throw new Error(message);
 }
 
-export const renderGroup = (params) => {
+export const renderGroup = (params, searchTerm = "") => {
   const group_id = params.get("id");
   if (!group_id) return throwError("Grupo nao encontrado");
 
@@ -112,6 +112,14 @@ export const renderGroup = (params) => {
 
   const user = Cookies.getUser();
   if (!user) throw new Error("Usuario invalido!");
+
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase();
+    group.posts = group.posts.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.message.toLowerCase().includes(term)
+    );
+  }
 
   if (!group.users_id.includes(user.id) && group.private) {
     renderHeader(false);

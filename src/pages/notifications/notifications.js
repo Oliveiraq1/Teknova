@@ -39,7 +39,7 @@ export const showNotifications = () => {
 
 export const renderNotifications = () => {
   showNotifications();
-  renderHeader();
+  renderHeader(false);
   renderSidebar();
   renderNavbar();
 }
