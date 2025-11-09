@@ -179,13 +179,23 @@ window.joinPublicGroup = function joinPublicGroup(groupId) {
   window.alert(`Bem-vindo(a) ao grupo ${groups[groupIndex].name}`);
 }
 
-window.joinRequest = function joinRequest(groupId) {
-  window.alert("Funcao a ser implementada");
-  window.location.hash = "#home";
-}
+window.leaveGroup = function leaveGroup(groupId) {
+  const user = Cookies.getUser();
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const groupIndex = groups.findIndex(g => g.id == groupId);
 
-/* 
-  title: Cachorros sabem falar, só fingem que não
-  message: Desde os tempos antigos, os cães dominam várias línguas humanas. Eles só não falam porque assinaram um acordo de silêncio com a ONU em 1949. Repare: eles entendem tudo, mas só respondem com latidos. Coincidência? Duvido.
-  image: https://imgs.search.brave.com/UklDwgtzCJsLNLxKJuHTAhqLDQquku8Uicj8alRyn_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9wb3J0cmFpdC1k/b2ctd2l0aC1kb2dz/LW91dGRvb3JzXzEw/NDg5NDQtMTM0MDQ5/NTUuanBnP3NlbXQ9/YWlzX2luY29taW5n/Jnc9NzQwJnE9ODA
-*/
+  const group = groups[groupIndex];
+  const userIndex = group.users_id.indexOf(user.id);
+
+  if (userIndex === -1) {
+    window.alert("Você não está neste grupo.");
+    return;
+  }
+
+  group.users_id.splice(userIndex, 1);
+
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+
+  window.location.reload();
+  window.alert(`Você saiu do grupo ${group.name}`);
+}

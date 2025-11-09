@@ -5,6 +5,7 @@ import { renderGroup } from "../../pages/groups/group.js";
 import { renderNotifications } from "../../pages/notifications/notifications.js";
 import { renderHome } from "../../pages/home/home.js";
 import { renderAdminDashboard } from "../../pages/admin/admin.js";
+import { renderCommunities } from "../../pages/community/community.js";
 
 window.addEventListener("hashchange", renderPage);
 window.addEventListener("load", renderPage);
@@ -16,6 +17,7 @@ const routes = {
   group: { path: "pages/groups/group.html" },
   notifications: { path: "pages/notifications/notifications.html" },
   admin: { path: "pages/admin/admin.html" },
+  community: { path: "pages/community/community.html" }
 }
 
 LocalStorage.load();
@@ -41,6 +43,7 @@ function renderPage() {
       if (path == "notifications") { renderNotifications() };
       if (path == "home") { renderHome() };
       if (path == "admin") { renderAdminDashboard() };
+      if (path == "community") { renderCommunities() };
     })
     .catch((error) => {
       console.log(error);
