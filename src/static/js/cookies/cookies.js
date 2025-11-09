@@ -57,7 +57,9 @@ class Cookies {
       email: user.email,
       cpf: user.cpf,
       last_name: user.last_name,
-      admin: user.admin
+      admin: user.admin,
+      birthdate: user.birthdate,
+      password: user.password
     }
   }
 }

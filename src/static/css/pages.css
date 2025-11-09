@@ -160,11 +160,6 @@
   transform: translateY(-50%);
   pointer-events: none;
 }
-.home-posts-container {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 6rem;
-}
 .home-header__user {
   width: 3.5rem;
   height: 3.5rem;
@@ -218,6 +213,67 @@
   align-items: center;
   max-width: 580px;
   gap: 1rem;
+}
+
+/* ======= PROFILE */
+.container.profile-container {
+  padding-top: 7rem;
+}
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 7rem;
+  padding-top: 2rem;
+}
+.profile-main__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 580px;
+  gap: 1rem;
+}
+.profile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+.profile-icon {
+  width: 7rem;
+  padding: .01rem;
+  background: var(--color-gray);
+  border-radius: 100%;
+}
+.profile-content__inputarea {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+.profile-input-label {
+  font-weight: bold;
+  font-size: .96rem;
+  position: relative;
+}
+.profile-input {
+  padding-right: 4.4rem;
+}
+.profile-input-button {
+  position: absolute;
+  top: 65%;
+  right: .4rem;
+  transform: translateY(-50%);
+  font-size: .94rem;
+  padding: .3rem .5rem;
+  background-color: var(--color-base-blue);
+  color: var(--color-white);
+  border-radius: .4rem;
+  cursor: pointer;
 }
 
 /* ======= ADMIN DASHBOARD CONTAINER */

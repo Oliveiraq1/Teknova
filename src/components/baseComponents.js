@@ -4,10 +4,10 @@ import header from "./header.js";
 import sidebar from "./sidebar.js";
 import mobileNavbar from "./mobile-navbar.js";
 
-export const renderHeader = () => {
+export const renderHeader = (input = true) => {
   const { image_url } = Cookies.getUser();
   const headerComponent = document.getElementById("header");
-  headerComponent.innerHTML = header();
+  headerComponent.innerHTML = header(input);
 
   const userIcon = document.getElementById("header-user-icon");
   userIcon.src = image_url;
