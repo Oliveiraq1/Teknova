@@ -72,6 +72,7 @@
 }
 .post-actions-icons__icon {
   max-width: 1.7rem;
+  cursor: pointer;
 }
 .post-actions-icons__left,
 .post-actions-icons__right {

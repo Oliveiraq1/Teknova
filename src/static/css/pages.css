@@ -135,6 +135,7 @@
 .home-header-sidebar__icon {
   width: 2rem;
   display: none;
+  cursor: pointer;
 }
 .home-header__container {
   flex: 1;
@@ -277,6 +278,27 @@
 }
 
 /* ======= ADMIN DASHBOARD CONTAINER */
+.container.admin-container {
+  padding-top: 7rem;
+}
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 7rem;
+  padding-top: 2rem;
+}
+.admin-main__container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 580px;
+  gap: 1rem;
+}
 .admin-dashboard {
   display: flex;
   flex-direction: column;
