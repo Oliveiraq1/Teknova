@@ -30,7 +30,7 @@ const sidebar = () => {
                   <img src="${g.image_url}" alt="group-img" class="sidebar-community__group-img" />
                   <p>${g.name}</p>
                 </a>
-              `))}
+              `)).join("")}
               <div class="sidebar-communities no-community">
                 <a href="#community">Buscar comunidades
               </a></div>
