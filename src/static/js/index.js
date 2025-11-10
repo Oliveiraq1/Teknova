@@ -53,16 +53,3 @@ function renderPage() {
       document.getElementById("app").innerHTML = Page404();
     })
 }
-
-// const renderNav = () => {
-
-//   const html = (`
-//     <img class="icon-nav" src="../../static/assets/icons/notification-13-svgrepo-com-blue-outline-fixed.svg" alt="notification">
-//     <img class="icon-nav" id="big-icon" src="../../static/assets/icons/house-02-svgrepo-com-blue-outline-fixed.svg" alt="home">
-//     <img class="icon-nav" id="big-icon" src="../../static/assets/icons/message-circle-matched-stroke.svg" alt="community">
-//     <img class="icon-nav" id="perfil-icon" src="https://api.dicebear.com/7.x/adventurer/svg?seed=admin" alt="perfil">
-//   `)
-
-//   const groupElement = document.getElementById("navbar");
-//   groupElement.innerHTML = html;
-// }

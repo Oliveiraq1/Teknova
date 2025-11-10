@@ -170,6 +170,17 @@
 
   display: none;
 }
+.home-header__details {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 580px;
+  margin-bottom: 1rem;
+}
+.home-header__details-button {
+  padding: .6rem;
+}
 
 /* ======= COMMUNITY */
 .container.communities-container {

@@ -133,6 +133,11 @@
   .sidebar-wrapper.open {
     max-width: 45%;
   }
+
+  /* ======= HOME */
+  .home-header__details {
+    max-width: 900px;
+  }
 }
 
 @media (min-width: 1280px) { // LAPTOP M

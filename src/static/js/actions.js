@@ -4,7 +4,7 @@ import { cookieTypes } from "./cookies/cookie.types.js";
 import { localStorageTypes } from "./localstorage/localstorage.types.js";
 import { checkYears } from "./utils/date.utils.js";
 import { testCPF } from "./utils/date.utils.js";
-import { addUser, groupAddPost } from "./localstorage/localstorage.functions.js";
+import { addUser, feedAddPost, groupAddPost } from "./localstorage/localstorage.functions.js";
 import { renderHome } from "../../pages/home/home.js";
 import { renderGroup } from "../../pages/groups/group.js";
 import { renderCommunities } from "../../pages/community/community.js";
@@ -115,23 +115,24 @@ window.openPostModal = function openPostModal() {
     : modal.classList.add("hidden");
 }
 
-window.createPost = function createPost(groupId) {
-  if (!groupId) return;
-
+window.createPost = function createPost(groupId = null) {
   const title = document.getElementById("post-modal-title").value;
   const message = document.getElementById("post-modal-message").value;
   const image_url = document.getElementById("post-modal-image_url").value;
 
   if (!title || !message || !image_url) return window.alert("Por favor, informe todos os campos!");
 
-  const groups = LocalStorage.get(localStorageTypes.GROUPS, localStorageTypes.GROUPS);
-  const groupIndex = groups.findIndex(g => g.id == groupId);
-  if (groupIndex == -1) return;
+  if (groupId) {
+    groupAddPost(groupId, { title, message, image_url });
+  } else {
+    feedAddPost({ title, message, image_url });
+  }
 
-  groupAddPost(groupId, { title, message, image_url });
   window.alert("Post adicionado com sucesso!")
   window.location.reload();
 }
+
+
 
 window.groupRequest = function groupRequest(groupId) {
   const { id: user_id, name, last_name } = Cookies.getUser();

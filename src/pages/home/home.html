@@ -1,5 +1,20 @@
 <div class="container home-container">
   <div id="header"></div>
+  <div class="flex-center">
+    <div class="home-header__details">
+      <button class="home-header__details-button" onclick="openPostModal()">Novo Post</button>
+    </div>
+  </div>
+  <div class="flex-center">
+    <div class="modal hidden" id="post-modal">
+      <div class="modal-container">
+        <input type="text" id="post-modal-title" placeholder="Titulo do post *" />
+        <input type="text" id="post-modal-message" placeholder="Corpo do post *" />
+        <input type="text" id="post-modal-image_url" placeholder="Informe o link da imagem *" />
+        <button type="button" onclick="createPost()">Criar post</button>
+      </div>
+    </div>
+  </div>
   <div class="group-post-container">
     <div id="home-posts"></div>
   </div>
