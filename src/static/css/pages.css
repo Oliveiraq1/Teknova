@@ -3,8 +3,8 @@
   gap: 2rem;
 }
 .lr-header {
-  gap: 1.3rem;
-  padding: 1.03rem;
+  padding-bottom: 1rem;
+  gap: .6rem;
 }
 .lr-header__text {
   gap: .4rem;

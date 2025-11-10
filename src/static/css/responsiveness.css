@@ -24,6 +24,7 @@
   }
 
 }
+
 @media (min-width: 768px) {  // TABLET
   /* ======= Classes Utilitarias */
   .container {
@@ -33,7 +34,7 @@
   /* ======= Paginas */
   /* === Login & Register */
   .lr-main__border {
-    padding: 2rem;
+    padding: 1.2rem;
     border-radius: .5rem;
     box-shadow: 0 0 .8rem rgba(0,0,0,.3);
   }
@@ -84,6 +85,11 @@
   }
 
   /* ======= Paginas */
+  /* ======= LOGIN & REGISTER */
+  .lr-form {
+    gap: .5rem;
+  }
+
   /* === Group */
   .group-header {
     min-height: 180px;
@@ -133,6 +139,17 @@
   /* ======= Classes Utilitarias */
   .container {
     max-width: 1140px;
+  }
+
+  /* ======= LOGIN & REGISTER */
+  .lr-main__border {
+    padding: 2rem;
+  }
+  .lr-header {
+    padding: 1.2rem;
+  }
+  .lr-form {
+    gap: .9rem;
   }
 }
 
