@@ -568,6 +568,24 @@
   max-width: 450px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
 }
+.dashboard-data-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard-data__button {
+  cursor: pointer;
+  width: 100%;
+  background: var(--color-gray);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+  padding: .8rem;
+  border-bottom-left-radius: .8rem;
+  border-bottom-right-radius: .8rem;
+}
+.dashboard-data__button:hover {
+  opacity: .8;
+}
 .dashboard-data__item:last-child {
   border-bottom-right-radius: .8rem;
   border-bottom-left-radius: .8rem;
