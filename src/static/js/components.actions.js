@@ -199,11 +199,9 @@ window.removeReportPost = function removeReportPost(groupId = null, postId) {
     LocalStorage.set(localStorageTypes.GROUPS, groups);
   }
 
-  // Atualiza ícone
   warningElement.src = "/static/assets/icons/warning.svg";
   warningElement.setAttribute("onclick", `reportPost(${groupId === null ? "'null'" : groupId}, '${postId}')`);
 
-  // Atualiza ou remove report
   const reportIndex = reports.findIndex(r => {
     const samePost = r.post.id === postId;
     const reportGroupId = r.group ? r.group.id : null;
@@ -225,12 +223,13 @@ window.markNotificationAsSaw = function markNotificationAsSaw(id, moveTo) {
   const { id: userId } = Cookies.getUser();
   const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
   const updated = notifications.map(n => {
+
     if (n.id == id) return { ...n, saw: [...new Set([...n.saw, userId])] };
     return n;
   });
 
   LocalStorage.set(localStorageTypes.NOTIFICATIONS, updated);
-  window.location.href = moveTo;
+  moveTo == "null" ? window.location.reload() : window.location.href = moveTo;
 }
 
 window.deleteNotification = function deleteNotification(id) {
@@ -279,9 +278,10 @@ window.deleteSawNotifications = () => {
 /* === NOTIFICATIONS */
 function parseNotf(str) {
   const input = str.trim();
+  const users = LocalStorage.get(localStorageTypes.USERS);
 
   if (/^\s*all\s*$/i.test(str)) {
-    return "all";
+    return users.map(u => u.id);
   }
 
   if (/^\s*\d+(\s*,\s*\d+)*\s*$/.test(str)) {
