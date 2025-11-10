@@ -126,6 +126,6 @@ export function getUserNotifications() {
   const { id: user_id } = Cookies.getUser();
   const notifications = LocalStorage.get(localStorageTypes.NOTIFICATIONS);
 
-  const user_notifications = notifications.filter(notf => notf.target.includes(user_id));
+  const user_notifications = notifications.filter(notf => notf.target.includes(user_id) || notf.target.includes("all"));
   return user_notifications.length > 0 ? user_notifications : null;
 }

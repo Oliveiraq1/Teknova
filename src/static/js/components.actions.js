@@ -220,7 +220,6 @@ window.removeReportPost = function removeReportPost(groupId = null, postId) {
   }
 };
 
-
 /* ======= Notifications */
 window.markNotificationAsSaw = function markNotificationAsSaw(id, moveTo) {
   const { id: userId } = Cookies.getUser();
@@ -277,7 +276,40 @@ window.deleteSawNotifications = () => {
 
 /* ======= ADMIN Actions */
 
-/* === TABLES */
+/* === NOTIFICATIONS */
+function parseNotf(str) {
+  const input = str.trim();
+
+  if (/^\s*all\s*$/i.test(str)) {
+    return "all";
+  }
+
+  if (/^\s*\d+(\s*,\s*\d+)*\s*$/.test(str)) {
+    return input.split(",")
+      .map(s => s.trim())
+      .map(Number);
+  }
+
+  return null;
+}
+
+window.generateNotification = function generateNotification() {
+  const title = window.prompt("Informe o titulo da notificacao:");
+  if (!title) return;
+
+  const message = window.prompt("Informe a mensagem da notificacao:");
+  if (!message) return window.alert("A mensagem nao pode estar vazia. Tente novamente!");
+
+  const targetStr = window.prompt("Informe o id dos usuarios que devem receber a notificacao (e.g.: all / 1,2,3,4):");
+  if (!targetStr) return window.alert("Campo nao pode estar vazio. Tente novamente!");
+
+  const target = parseNotf(targetStr);
+  if (!target) return window.alert("Por favor, informe um valor valido!\n- all: para todos\n- 1,2,3,4: ids");
+
+  createNotification({
+    title, message, target, moveTo: null
+  });
+}
 
 /* === USER TABLE */
 window.filterUserTable = function filterUserTable() {
