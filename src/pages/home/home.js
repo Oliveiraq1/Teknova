@@ -27,7 +27,7 @@ export const renderHome = (searchTerm = "") => {
   `);
 
   const groupElement = document.getElementById("home-posts");
-  groupElement.innerHTML = html;
+  groupElement.innerHTML = posts.length == 0 ? "Seja o primeiro a fazer um post!" : html;
 
   renderHeader();
   renderSidebar();

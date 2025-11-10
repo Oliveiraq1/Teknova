@@ -35,7 +35,7 @@
   .lr-main__border {
     padding: 2rem;
     border-radius: .5rem;
-    box-shadow: 0 0 .8rem rgba(0,0,0,.1)
+    box-shadow: 0 0 .8rem rgba(0,0,0,.3);
   }
 
   /* === GROUP */
