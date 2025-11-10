@@ -205,6 +205,8 @@
   box-shadow: 1px 1px 5px rgba(0,0,0,.3);
   min-height: 5rem;
   background-color: var(--color-white);
+
+  z-index: 100;
 }
 .nav-icon {
   width: 2.2rem;
