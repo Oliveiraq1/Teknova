@@ -59,6 +59,30 @@ export function groupPostAddComment(groupId, postId, comment) {
   LocalStorage.set(localStorageTypes.GROUPS, groups);
 }
 
+export function feedAddPost(post) {
+  const user = Cookies.getUser();
+  const posts = LocalStorage.get(localStorageTypes.POSTS);
+
+  const data = {
+    id: posts.length,
+    author: {
+      id: user.id,
+      fullname: `${user.name} ${user.last_name}`
+    },
+    comments: [],
+    date: todayDate(),
+    fake: false,
+    image_url: post.image_url,
+    likes: [],
+    message: post.message,
+    title: post.title,
+    denounces: []
+  }
+
+  posts.push(data);
+  LocalStorage.set(localStorageTypes.POSTS, posts);
+}
+
 export function feedPostAddComment(postId, comment) {
   const posts = LocalStorage.get(localStorageTypes.POSTS);
 

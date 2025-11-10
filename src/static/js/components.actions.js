@@ -104,8 +104,6 @@ window.reportPost = function reportPost(groupId = null, postId) {
   }
   postId = parseInt(postId);
 
-  console.log("📌 reportPost chamada com:", { groupId, postId });
-
   const ok = window.confirm("Você tem certeza que deseja denunciar essa postagem?");
   if (!ok) return;
 
@@ -118,15 +116,9 @@ window.reportPost = function reportPost(groupId = null, postId) {
 
   if (groupId === null) {
     const posts = LocalStorage.get(localStorageTypes.POSTS);
-    console.log("📦 POSTS carregados:", posts);
 
     post = posts[postId];
-    if (!post) {
-      console.warn("❌ Post do feed não encontrado no índice:", postId);
-      return;
-    }
-
-    console.log("✅ Post do feed encontrado:", post);
+    if (!post) return;
 
     post.denounces = post.denounces || [];
     post.denounces.push(user_id);
@@ -134,18 +126,10 @@ window.reportPost = function reportPost(groupId = null, postId) {
   } else {
     const groups = LocalStorage.get(localStorageTypes.GROUPS);
     group = groups.find(g => g.id === groupId);
-    if (!group) {
-      console.warn("❌ Grupo não encontrado:", groupId);
-      return;
-    }
+    if (!group) return;
 
     post = group.posts[postId];
-    if (!post) {
-      console.warn("❌ Post no grupo não encontrado:", { groupId, postId });
-      return;
-    }
-
-    console.log("✅ Post no grupo encontrado:", post);
+    if (!post) return;
 
     post.denounces = post.denounces || [];
     post.denounces.push(user_id);
@@ -160,10 +144,8 @@ window.reportPost = function reportPost(groupId = null, postId) {
   );
 
   if (reportIndex !== -1) {
-    console.log("✏️ Atualizando denúncia existente");
     reports[reportIndex].denounces.push(user_id);
   } else {
-    console.log("➕ Criando nova denúncia");
     reports.push({
       group: group ? { id: group.id, name: group.name } : null,
       post: {
@@ -181,7 +163,6 @@ window.reportPost = function reportPost(groupId = null, postId) {
   }
 
   LocalStorage.set(localStorageTypes.REPORTS, reports);
-  console.log("📥 REPORTS atualizados:", reports);
 };
 
 window.removeReportPost = function removeReportPost(groupId = null, postId) {
@@ -248,8 +229,6 @@ window.markNotificationAsSaw = function markNotificationAsSaw(id, moveTo) {
     if (n.id == id) return { ...n, saw: [...new Set([...n.saw, userId])] };
     return n;
   });
-
-  console.log({ updated });
 
   LocalStorage.set(localStorageTypes.NOTIFICATIONS, updated);
   window.location.href = moveTo;
