@@ -544,10 +544,13 @@ window.deleteGroup = (id) => {
   })
 
   const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS);
+  const reports = LocalStorage.get(localStorageTypes.REPORTS);
   const updatedRequests = requests.filter(r => r.group.id != id);
+  const updatedReports = reports.filter(r => r.group.id != id);
 
   LocalStorage.set(localStorageTypes.GROUPS, updatedGroups);
   LocalStorage.set(localStorageTypes.GROUP_REQUESTS, updatedRequests);
+  LocalStorage.set(localStorageTypes.REPORTS, updatedReports);
   window.alert(`Comunidade ${group.name} deletada com sucesso! Todos os antigos membros foram informados.`);
   renderGroupsTable();
   renderGroupRequestsTable();
@@ -555,6 +558,9 @@ window.deleteGroup = (id) => {
 
 /* REQUESTS TABLE */
 window.approveGroupRequest = (id) => {
+  const ok = window.confirm("Tem certeza que deseja aceitar a solicitacao do usuario?");
+  if (!ok) return;
+
   const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS) || [];
   const request = requests.find(r => r.id === id);
   if (!request) return;
@@ -582,6 +588,9 @@ window.approveGroupRequest = (id) => {
 };
 
 window.denyGroupRequest = (id) => {
+  const ok = window.confirm("Tem certeza que deseja negar a solicitacao do usuario?");
+  if (!ok) return;
+
   const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS) || [];
   const request = requests.find(r => r.id === id);
   const updatedRequests = requests.filter(r => r.id !== id);
