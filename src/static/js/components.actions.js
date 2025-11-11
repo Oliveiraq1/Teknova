@@ -15,7 +15,8 @@ import {
 import {
   renderUsersTable,
   renderGroupRequestsTable,
-  renderReportsTable
+  renderReportsTable,
+  renderGroupsTable
 } from "../../pages/admin/admin.js";
 import { cookieTypes } from "./cookies/cookie.types.js";
 
@@ -294,10 +295,10 @@ function parseNotf(str) {
 }
 
 window.generateNotification = function generateNotification() {
-  const title = window.prompt("Informe o titulo da notificacao:");
+  const title = window.prompt("Informe o titulo da notificacao:").trim();
   if (!title) return;
 
-  const message = window.prompt("Informe a mensagem da notificacao:");
+  const message = window.prompt("Informe a mensagem da notificacao:").trim();
   if (!message) return window.alert("A mensagem nao pode estar vazia. Tente novamente!");
 
   const targetStr = window.prompt("Informe o id dos usuarios que devem receber a notificacao (e.g.: all / 1,2,3,4):");
@@ -319,6 +320,16 @@ window.filterUserTable = function filterUserTable() {
   if (!filter.trim()) renderUsersTable();
 
   renderUsersTable(filter);
+  inputElement.value = "";
+}
+
+window.filterGroupsTable = function filterGroupsTable() {
+  const inputElement = document.getElementById("groups-table-filter");
+  const filter = inputElement.value;
+
+  if (!filter.trim()) renderGroupsTable();
+
+  renderGroupsTable(filter);
   inputElement.value = "";
 }
 
@@ -410,7 +421,6 @@ window.markAsFake = function markAsFake(groupId, postId) {
     }
   }
 
-  // Remover da tabela de denúncias
   const reports = LocalStorage.get(localStorageTypes.REPORTS) || [];
   const updatedReports = reports.filter(report => {
     const samePost = report.post.id === postId;
@@ -427,7 +437,6 @@ window.deletePost = function deletePost(groupId, postId) {
   groupId = groupId === 'null' ? null : parseInt(groupId);
   postId = parseInt(postId);
 
-  // Remover da tabela de denúncias
   const reports = LocalStorage.get(localStorageTypes.REPORTS) || [];
   const updatedReports = reports.filter(report => {
     const samePost = report.post.id === postId;
@@ -437,7 +446,6 @@ window.deletePost = function deletePost(groupId, postId) {
   });
   LocalStorage.set(localStorageTypes.REPORTS, updatedReports);
 
-  // Remover do feed
   if (groupId === null) {
     const posts = LocalStorage.get(localStorageTypes.POSTS) || [];
     if (posts[postId]) {
@@ -445,7 +453,6 @@ window.deletePost = function deletePost(groupId, postId) {
       LocalStorage.set(localStorageTypes.POSTS, posts);
     }
   } else {
-    // Remover do grupo
     const groups = LocalStorage.get(localStorageTypes.GROUPS) || [];
     const group = groups.find(g => g.id === groupId);
     if (group && group.posts[postId]) {
@@ -457,14 +464,12 @@ window.deletePost = function deletePost(groupId, postId) {
   renderReportsTable();
 };
 
-
 window.revokeDenounce = function revokeDenounce(groupId, postId) {
   groupId = groupId === 'null' || groupId === null ? null : parseInt(groupId);
   postId = parseInt(postId);
 
   const reports = LocalStorage.get(localStorageTypes.REPORTS) || [];
 
-  // Limpa a denúncia no post original
   if (groupId === null) {
     const posts = LocalStorage.get(localStorageTypes.POSTS) || [];
     if (posts[postId]) {
@@ -480,7 +485,6 @@ window.revokeDenounce = function revokeDenounce(groupId, postId) {
     }
   }
 
-  // Remove da tabela de denúncias
   const updatedReports = reports.filter(report => {
     const samePost = report.post.id === postId;
     const reportGroupId = report.group ? report.group.id : null;
@@ -492,6 +496,62 @@ window.revokeDenounce = function revokeDenounce(groupId, postId) {
   renderReportsTable();
 };
 
+/* GROUPS TABLE */
+window.createCommunity = function createCommunity() {
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const groupsNames = groups.map(g => g.name.toLowerCase());
+
+  const communityName = window.prompt("Digite o nome da comunidade:").trim();
+  if (!communityName) return;
+  if (groupsNames.includes(communityName.toLowerCase())) return window.alert("Ja existe uma comunidade com esse nome!");
+
+  const privateCommunity = window.prompt("A comunidade sera privada? (y/n)").trim().toLowerCase()[0];
+  const correctAnswer = ["y", "n"].some(t => privateCommunity.includes(t));
+
+  if (!correctAnswer) return window.alert("Valor invalido, tente novamente!");
+
+  const data = {
+    id: groups[groups.length - 1].id + 1,
+    banner_url: "",
+    image_url: `https://ui-avatars.com/api/?name=${communityName}`,
+    name: communityName,
+    posts: [],
+    private: privateCommunity == "y" ? true : false,
+    users_id: []
+  }
+
+  groups.push(data);
+  LocalStorage.set(localStorageTypes.GROUPS, groups);
+  window.alert(`Comunidade ${communityName} criada com sucesso!`);
+  renderGroupsTable();
+}
+
+window.deleteGroup = (id) => {
+  const groups = LocalStorage.get(localStorageTypes.GROUPS);
+  const group = groups[id];
+
+  const ok = window.confirm(`Voce tem certeza que deseja deletar o grupo ${group.name}?`);
+  if (!ok) return;
+
+  const target = group.users_id;
+  const updatedGroups = groups.filter(g => g.id != id);
+
+  createNotification({
+    title: `Comunidade ${group.name}`,
+    message: `A comunidade foi excluida pelos administradores!`,
+    target,
+    moveTo: null
+  })
+
+  const requests = LocalStorage.get(localStorageTypes.GROUP_REQUESTS);
+  const updatedRequests = requests.filter(r => r.group.id != id);
+
+  LocalStorage.set(localStorageTypes.GROUPS, updatedGroups);
+  LocalStorage.set(localStorageTypes.GROUP_REQUESTS, updatedRequests);
+  window.alert(`Comunidade ${group.name} deletada com sucesso! Todos os antigos membros foram informados.`);
+  renderGroupsTable();
+  renderGroupRequestsTable();
+}
 
 /* REQUESTS TABLE */
 window.approveGroupRequest = (id) => {

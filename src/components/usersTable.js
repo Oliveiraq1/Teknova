@@ -4,6 +4,7 @@ import { localStorageTypes } from "../static/js/localstorage/localstorage.types.
 
 function filterUsers(users, searchTerm) {
   const term = searchTerm.trim().toLowerCase();
+  const termAsNumber = Number(term);
 
   return users.filter(user => {
     const displayAdmin = user.admin ? "admin" : "usuario";
@@ -14,7 +15,8 @@ function filterUsers(users, searchTerm) {
       user.email.toLowerCase().includes(term) ||
       user.cpf.toLowerCase().includes(term) ||
       displayAdmin.includes(term) ||
-      displayActive.includes(term)
+      displayActive.includes(term) ||
+      (!isNaN(termAsNumber) && user.id === termAsNumber)
     );
   });
 }
