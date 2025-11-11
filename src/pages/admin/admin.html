@@ -16,8 +16,12 @@
             <p class="dashboard-data__item-data" id="active-denounces-count"></p>
           </div>
           <div class="dashboard-data__item">
+            <h3 class="dashboard-data__item-title">Comunidades ativas:</h3>
+            <p class="dashboard-data__item-data" id="active-communities-count"></p>
+          </div>
+          <div class="dashboard-data__item">
             <h3 class="dashboard-data__item-title">Pedidos de grupo:</h3>
-            <p class="dashboard-data__item-data" id="active-requests-count">15</p>
+            <p class="dashboard-data__item-data" id="active-requests-count"></p>
           </div>
         </div>
       </section>
@@ -28,6 +32,9 @@
         <div class="dashboard-data-btn">
           <div class="dashboard-data__button">
             <h3 class="dashboard-data__item-title" onclick="generateNotification()">Gerar notificacao</h3>
+          </div>
+          <div class="dashboard-data__button">
+            <h3 class="dashboard-data__item-title" onclick="createCommunity()">Criar comunidade</h3>
           </div>
         </div>
       </section>
@@ -65,12 +72,12 @@
         <div class="admin-section-header">
           <h4>Tabela de Grupos</h4>
           <div class="admin-section-filter">
-            <input type="text" placeholder="Filtrar" id="users-table-filter" class="users-table-filter" />
-            <button type="button" onclick="filterUserTable()" class="users-table-filter-button">Filtrar</button>
+            <input type="text" placeholder="Filtrar" id="groups-table-filter" class="users-table-filter" />
+            <button type="button" onclick="filterGroupsTable()" class="users-table-filter-button">Filtrar</button>
           </div>
         </div>
         <div class="admin-section-table">
-          <!-- <div id="users-table"></div> -->
+          <div id="groups-table"></div>
         </div>
       </section>
       <hr />

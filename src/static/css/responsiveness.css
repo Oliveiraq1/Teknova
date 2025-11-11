@@ -15,14 +15,9 @@
   .dashboard-data {
     grid-template-columns: repeat(3, 1fr);
   }
-  .dashboard-data__item:first-child {
-    border-bottom-left-radius: .8rem;
+  .dashboard-data-btn {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .dashboard-data__item:last-child {
-    border-bottom-right-radius: .8rem;
-    border-bottom-left-radius: 0;
-  }
-
 }
 
 @media (min-width: 768px) {  // TABLET
@@ -46,7 +41,7 @@
 
   /* === COMMUNITIES */
   .communities-main__container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* === NOTIFICATIONS */
@@ -88,6 +83,10 @@
   /* ======= LOGIN & REGISTER */
   .lr-form {
     gap: .5rem;
+  }
+
+  .communities-main__container {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   /* === Group */
