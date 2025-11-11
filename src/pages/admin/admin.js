@@ -1,8 +1,8 @@
 import LocalStorage from "../../static/js/localstorage/localstorage.js";
-import Cookies from "../../static/js/cookies/cookies.js";
 import { localStorageTypes } from "../../static/js/localstorage/localstorage.types.js";
 
 import usersTable from "../../components/usersTable.js";
+import groupsTable from "../../components/groupsTable.js";
 import groupRequestsTable from "../../components/groupRequestsTable.js";
 
 import {
@@ -73,6 +73,15 @@ export const renderReportsTable = () => {
   renderDenounceSlide();
 };
 
+export const renderGroupsTable = (filter = null) => {
+  const groupsCountElement = document.getElementById("active-communities-count");
+  const groupsCount = LocalStorage.get(localStorageTypes.GROUPS).length;
+  groupsCountElement.innerHTML = `${groupsCount}`;
+
+  const groupTableElement = document.getElementById("groups-table");
+  groupTableElement.innerHTML = groupsTable(filter);
+};
+
 export const renderGroupRequestsTable = () => {
   const requestsCountElement = document.getElementById("active-requests-count");
   const requestsCount = LocalStorage.get(localStorageTypes.GROUP_REQUESTS).length;
@@ -87,6 +96,7 @@ export const renderAdminDashboard = () => {
   renderSidebar();
   renderNavbar();
   renderUsersTable();
-  renderGroupRequestsTable();
   renderReportsTable();
+  renderGroupsTable();
+  renderGroupRequestsTable();
 };
