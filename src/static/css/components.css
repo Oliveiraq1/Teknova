@@ -517,6 +517,7 @@
 .community-container__body-button {
   padding: .3rem .5rem;
   border-radius: .5rem;
+  cursor: pointer;
 }
 .community-container__body-button.joined {
   background: var(--text-off);
@@ -530,7 +531,6 @@
 }
 .community-container__body-button.ask {
   background: var(--color-base-blue);
-  cursor: not-allowed;
   color: var(--color-white);
 }
 .community-container__users-count {
