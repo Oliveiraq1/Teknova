@@ -17,24 +17,7 @@ export default [
     denounces: []
   },
   {
-    id: 1, author: { id: 1, fullname: "john santos" },
-    title: "Pombas sao drones do governo", message: "Desde 1976, todas as pombas foram secretamente substituídas por drones de vigilância. Elas não dormem, apenas recarregam nos fios elétricos. A prova? Já viu filhote de pombo? Pois é.",
-    comments: [
-      { author: { id: 1, name: "John", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=John", }, message: "mlk, nunca tinha pensado nisso" },
-      { author: { id: 2, name: "John v2", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv2", }, message: "mlk, nunca tinha pensado nisso" },
-      { author: { id: 3, name: "John v3", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv3", }, message: "mlk, nunca tinha pensado nisso AAAAAAAAAA CHIDORI" },
-      { author: { id: 4, name: "John v4", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv4", }, message: "FAZ O L AI GENIO" },
-      { author: { id: 5, name: "John v5", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv5", }, message: "VOLTA MITO PFFFFFFF" },
-      { author: { id: 6, name: "John v6", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv6", }, message: "FAZ O L AI GENIO KKKKKKKKKKKKKKK" }
-    ],
-    likes: [],
-    image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
-    fake: false,
-    date: "06/11/2025",
-    denounces: []
-  },
-  {
-    id: 2,
+    id: 1,
     author: { id: 30, fullname: "gestor" },
     title: "Cactos são antenas camufladas",
     message: "Alguns cactos em áreas urbanas foram modificados para funcionar como antenas de comunicação. Eles captam sinais de dispositivos móveis e transmitem dados para centrais ocultas. Já reparou como eles estão sempre em praças estratégicas?",
@@ -53,24 +36,7 @@ export default [
     denounces: []
   },
   {
-    id: 3, author: { id: 1, fullname: "john" },
-    title: "Pombas sao drones do governo", message: "Desde 1976, todas as pombas foram secretamente substituídas por drones de vigilância. Elas não dormem, apenas recarregam nos fios elétricos. A prova? Já viu filhote de pombo? Pois é.",
-    comments: [
-      { author: { id: 1, name: "John", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=John", }, message: "mlk, nunca tinha pensado nisso" },
-      { author: { id: 2, name: "John v2", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv2", }, message: "mlk, nunca tinha pensado nisso" },
-      { author: { id: 3, name: "John v3", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv3", }, message: "mlk, nunca tinha pensado nisso AAAAAAAAAA CHIDORI" },
-      { author: { id: 4, name: "John v4", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv4", }, message: "FAZ O L AI GENIO" },
-      { author: { id: 5, name: "John v5", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv5", }, message: "VOLTA MITO PFFFFFFF" },
-      { author: { id: 6, name: "John v6", image_url: "https://api.dicebear.com/7.x/adventurer/svg?seed=Johnv6", }, message: "FAZ O L AI GENIO KKKKKKKKKKKKKKK" }
-    ],
-    likes: [],
-    image_url: "https://imgs.search.brave.com/36WdI_GphA4a_NsBIif4HKRzaDQ-5gqp8gbH2q6D1VY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5vdmFjYW90ZWNu/b2xvZ2ljYS5jb20u/YnIvbm90aWNpYXMv/aW1hZ2Vucy8wMTAx/ODAyNDExMjctcm9i/by12b2EtY29tby1w/YXNzYXJvLmpwZw",
-    fake: false,
-    date: "06/11/2025",
-    denounces: []
-  },
-  {
-    id: 4,
+    id: 2,
     author: { id: 31, fullname: "curador" },
     title: "Semáforos são agentes secretos disfarçados",
     message: "Alguns semáforos modernos possuem câmeras e microfones embutidos que monitoram não apenas o trânsito, mas também conversas próximas. Estão conectados a redes de vigilância urbana e podem identificar rostos em tempo real.",
@@ -84,7 +50,7 @@ export default [
     ],
     likes: [],
     image_url: "https://imgs.search.brave.com/PmiFywu7utl6Y7PL5n-nrfFUzco9JKolGaDWxMgJY-M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cXVpdG9pbmZvcm1h/LmdvYi5lYy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMy8wNS9Q/b3ItcXVlLWxvcy1h/Z2VudGVzLWNpdmls/ZXMtZGUtdHJhbnNp/dG8tc2UtdWJpY2Fu/LWRlYmFqby1kZS1s/b3Mtc2VtYWZvcm9z/LWUxNjg1MDQxNTU5/NDkwLTgwMHg0NDUu/anBlZw",
-    fake: false,
+    fake: true,
     date: "06/09/2025",
     denounces: []
   }
